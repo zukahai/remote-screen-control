@@ -21,6 +21,18 @@ public class Client {
             e.printStackTrace();
         }
     }
+    
+    public Client(String ip, int port) {
+        this.user = null;
+        try {
+            this.socket = new Socket(ip, port);
+            System.out.println("Connected to server");
+            ClientThread clientThread = new ClientThread(this);
+            clientThread.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public void setUser(User user) {
         this.user = user;

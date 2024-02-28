@@ -1,1 +1,4 @@
 /target/
+/client/images/*
+/client/src/images/*
+/images/*
