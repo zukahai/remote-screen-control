@@ -22,14 +22,16 @@ import javax.swing.JSeparator;
 public class ClientView extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField ip_tf;
-	private JTextField port_tf;
+	public JTextField ip_tf;
+	public JTextField port_tf;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JPanel connect_pn;
 	private JPanel main_pn;
+
+	public JButton connect_server;
 
 	/**
 	 * Launch the application.
@@ -147,7 +149,7 @@ public class ClientView extends JFrame {
 		panel.add(connect_pn);
 		connect_pn.setLayout(null);
 		
-		ip_tf = new JTextField();
+		ip_tf = new JTextField("localhost");
 		ip_tf.setBounds(81, 50, 192, 26);
 		connect_pn.add(ip_tf);
 		ip_tf.setColumns(10);
@@ -167,18 +169,18 @@ public class ClientView extends JFrame {
 		lblPort.setBounds(25, 93, 46, 14);
 		connect_pn.add(lblPort);
 		
-		port_tf = new JTextField();
+		port_tf = new JTextField("6868");
 		port_tf.setColumns(10);
 		port_tf.setBounds(81, 87, 192, 26);
 		connect_pn.add(port_tf);
 		
-		JButton connect_server = new JButton("Kết nối");
+		connect_server = new JButton("Kết nối");
 		connect_server.setFont(new Font("Roboto", Font.PLAIN, 11));
-		connect_server.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setPanelMain();
-			}
-		});
+//		connect_server.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				setPanelMain();
+//			}
+//		});
 		connect_server.setBounds(101, 125, 89, 23);
 		connect_pn.add(connect_server);
 		
