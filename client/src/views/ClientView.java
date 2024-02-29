@@ -58,28 +58,33 @@ public class ClientView extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 920, 450);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.decode("#323333"));
 		contentPane.setBorder(new CompoundBorder());
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(Color.decode("#292a30"));
 		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel.setBounds(10, 11, 303, 384);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		main_pn = new JPanel();
+		main_pn.setBackground(Color.decode("#2f3239"));
 		main_pn.setBounds(10, 11, 283, 331);
 		panel.add(main_pn);
 		main_pn.setLayout(null);
 		
 		JPanel panel_1_1 = new JPanel();
+		panel_1_1.setBackground(Color.decode("#2f3239"));
 		panel_1_1.setLayout(null);
 		panel_1_1.setBounds(0, 11, 283, 126);
 		main_pn.add(panel_1_1);
 		
 		myID = new JTextField();
+		myID.setBackground(Color.decode("#acadaf"));
 		myID.setFont(new Font("Roboto", Font.BOLD, 13));
 		myID.setColumns(10);
 		myID.setBounds(65, 50, 208, 26);
@@ -87,21 +92,25 @@ public class ClientView extends JFrame {
 		panel_1_1.add(myID);
 		
 		JLabel lblId = new JLabel("ID");
+		lblId.setForeground(Color.decode("#fa78af"));
 		lblId.setFont(new Font("Roboto", Font.PLAIN, 11));
 		lblId.setBounds(10, 56, 61, 14);
 		panel_1_1.add(lblId);
 		
 		JLabel lblChoPhpKt = new JLabel("Cho phép kết nối", SwingConstants.CENTER);
+		lblChoPhpKt.setForeground(Color.decode("#fa7d66"));
 		lblChoPhpKt.setFont(new Font("Roboto", Font.PLAIN, 17));
 		lblChoPhpKt.setBounds(10, 11, 263, 14);
 		panel_1_1.add(lblChoPhpKt);
 		
 		JLabel lblPass = new JLabel("PASS");
+		lblPass.setForeground(Color.decode("#fa78af"));
 		lblPass.setFont(new Font("Roboto", Font.PLAIN, 11));
 		lblPass.setBounds(10, 93, 61, 14);
 		panel_1_1.add(lblPass);
 		
 		myPass = new JTextField();
+		myPass.setBackground(Color.decode("#acadaf"));
 		myPass.setFont(new Font("Roboto", Font.BOLD, 13));
 		myPass.setColumns(10);
 		myPass.setBounds(65, 87, 208, 26);
@@ -113,36 +122,42 @@ public class ClientView extends JFrame {
 		main_pn.add(separator);
 		
 		JPanel panel_1_2 = new JPanel();
+		panel_1_2.setBackground(Color.decode("#2f3239"));
 		panel_1_2.setLayout(null);
 		panel_1_2.setBounds(0, 161, 283, 171);
 		main_pn.add(panel_1_2);
 		
 		textField_2 = new JTextField();
+		textField_2.setBackground(Color.decode("#acadaf"));
 		textField_2.setFont(new Font("Roboto", Font.BOLD, 13));
 		textField_2.setColumns(10);
-		textField_2.setBounds(81, 50, 192, 26);
+		textField_2.setBounds(70, 50, 203, 26);
 		textField_2.setHorizontalAlignment(JTextField.CENTER);
 		panel_1_2.add(textField_2);
 		
 		JLabel lblNewLabel_1 = new JLabel("IP");
+		lblNewLabel_1.setForeground(Color.decode("#fa78af"));
 		lblNewLabel_1.setFont(new Font("Roboto", Font.PLAIN, 11));
 		lblNewLabel_1.setBounds(10, 56, 61, 14);
 		panel_1_2.add(lblNewLabel_1);
 		
 		JLabel lbliuKhinMn = new JLabel("Điều khiển màn hình máy khác", SwingConstants.CENTER);
+		lbliuKhinMn.setForeground(Color.decode("#fa7d66"));
 		lbliuKhinMn.setFont(new Font("Roboto", Font.PLAIN, 17));
 		lbliuKhinMn.setBounds(10, 11, 263, 14);
 		panel_1_2.add(lbliuKhinMn);
 		
 		JLabel lblPort_1 = new JLabel("PASS");
+		lblPort_1.setForeground(Color.decode("#fa78af"));
 		lblPort_1.setFont(new Font("Roboto", Font.PLAIN, 11));
 		lblPort_1.setBounds(10, 93, 61, 14);
 		panel_1_2.add(lblPort_1);
 		
 		textField_3 = new JTextField();
+		textField_3.setBackground(Color.decode("#acadaf"));
 		textField_3.setFont(new Font("Roboto", Font.BOLD, 13));
 		textField_3.setColumns(10);
-		textField_3.setBounds(81, 87, 192, 26);
+		textField_3.setBounds(70, 87, 203, 26);
 		textField_3.setHorizontalAlignment(JTextField.CENTER);
 		panel_1_2.add(textField_3);
 		
@@ -156,11 +171,13 @@ public class ClientView extends JFrame {
 		panel_1_2.add(connect_screen);
 		
 		connect_pn = new JPanel();
+		connect_pn.setBackground(Color.decode("#2f3239"));
 		connect_pn.setBounds(13, 57, 273, 171);
 		panel.add(connect_pn);
 		connect_pn.setLayout(null);
 		
 		ip_tf = new JTextField("localhost");
+		ip_tf.setBackground(Color.decode("#acadaf"));
 		ip_tf.setFont(new Font("Roboto", Font.BOLD, 13));
 		ip_tf.setBounds(81, 50, 192, 26);
 		ip_tf.setHorizontalAlignment(JTextField.CENTER);
@@ -168,21 +185,25 @@ public class ClientView extends JFrame {
 		ip_tf.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("IP");
+		lblNewLabel.setForeground(Color.decode("#fa78af"));
 		lblNewLabel.setFont(new Font("Roboto", Font.PLAIN, 11));
 		lblNewLabel.setBounds(25, 56, 46, 14);
 		connect_pn.add(lblNewLabel);
 		
 		JLabel lblKtNiTi = new JLabel("Kết nối tới máy chủ", SwingConstants.CENTER);
+		lblKtNiTi.setForeground(Color.decode("#fa7d66"));
 		lblKtNiTi.setFont(new Font("Roboto", Font.PLAIN, 17));
 		lblKtNiTi.setBounds(10, 11, 263, 14);
 		connect_pn.add(lblKtNiTi);
 		
 		JLabel lblPort = new JLabel("PORT");
+		lblPort.setForeground(Color.decode("#fa78af"));
 		lblPort.setFont(new Font("Roboto", Font.PLAIN, 11));
 		lblPort.setBounds(25, 93, 46, 14);
 		connect_pn.add(lblPort);
 		
 		port_tf = new JTextField("6868");
+		port_tf.setBackground(Color.decode("#acadaf"));
 		port_tf.setFont(new Font("Roboto", Font.BOLD, 13));
 		port_tf.setColumns(10);
 		port_tf.setHorizontalAlignment(JTextField.CENTER);
@@ -191,15 +212,16 @@ public class ClientView extends JFrame {
 		
 		connect_server = new JButton("Kết nối");
 		connect_server.setFont(new Font("Roboto", Font.PLAIN, 11));
-//		connect_server.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				setPanelMain();
-//			}
-//		});
+		connect_server.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setPanelMain();
+			}
+		});
 		connect_server.setBounds(101, 125, 89, 23);
 		connect_pn.add(connect_server);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.decode("#292a30"));
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_1.setBounds(336, 11, 546, 384);
 		contentPane.add(panel_1);
