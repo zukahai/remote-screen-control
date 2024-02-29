@@ -4,6 +4,7 @@ import java.net.Socket;
 
 public class Client {
     private User user;
+    private User userConnect;
     private Socket socket;
     private String ip;
     private int port;
@@ -66,7 +67,15 @@ public class Client {
         this.port = port;
     }
 
-    public static void main(String[] args) {
+    public User getUserConnect() {
+		return userConnect;
+	}
+
+	public void setUserConnect(User userConnect) {
+		this.userConnect = userConnect;
+	}
+
+	public static void main(String[] args) {
         Client client = new Client();
     }
 }

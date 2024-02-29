@@ -8,6 +8,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
+
+import models.User;
+
 import java.awt.Color;
 import javax.swing.JInternalFrame;
 import javax.swing.JTextField;
@@ -24,8 +27,8 @@ public class ClientView extends JFrame {
 	private JPanel contentPane;
 	public JTextField ip_tf;
 	public JTextField port_tf;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField myID;
+	private JTextField myPass;
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JPanel connect_pn;
@@ -76,10 +79,12 @@ public class ClientView extends JFrame {
 		panel_1_1.setBounds(0, 11, 283, 126);
 		main_pn.add(panel_1_1);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(65, 50, 208, 26);
-		panel_1_1.add(textField);
+		myID = new JTextField();
+		myID.setFont(new Font("Roboto", Font.BOLD, 13));
+		myID.setColumns(10);
+		myID.setBounds(65, 50, 208, 26);
+		myID.setHorizontalAlignment(JTextField.CENTER);
+		panel_1_1.add(myID);
 		
 		JLabel lblId = new JLabel("ID");
 		lblId.setFont(new Font("Roboto", Font.PLAIN, 11));
@@ -96,10 +101,12 @@ public class ClientView extends JFrame {
 		lblPass.setBounds(10, 93, 61, 14);
 		panel_1_1.add(lblPass);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(65, 87, 208, 26);
-		panel_1_1.add(textField_1);
+		myPass = new JTextField();
+		myPass.setFont(new Font("Roboto", Font.BOLD, 13));
+		myPass.setColumns(10);
+		myPass.setBounds(65, 87, 208, 26);
+		myPass.setHorizontalAlignment(JTextField.CENTER);
+		panel_1_1.add(myPass);
 		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(10, 148, 263, 2);
@@ -111,8 +118,10 @@ public class ClientView extends JFrame {
 		main_pn.add(panel_1_2);
 		
 		textField_2 = new JTextField();
+		textField_2.setFont(new Font("Roboto", Font.BOLD, 13));
 		textField_2.setColumns(10);
 		textField_2.setBounds(81, 50, 192, 26);
+		textField_2.setHorizontalAlignment(JTextField.CENTER);
 		panel_1_2.add(textField_2);
 		
 		JLabel lblNewLabel_1 = new JLabel("IP");
@@ -131,8 +140,10 @@ public class ClientView extends JFrame {
 		panel_1_2.add(lblPort_1);
 		
 		textField_3 = new JTextField();
+		textField_3.setFont(new Font("Roboto", Font.BOLD, 13));
 		textField_3.setColumns(10);
 		textField_3.setBounds(81, 87, 192, 26);
+		textField_3.setHorizontalAlignment(JTextField.CENTER);
 		panel_1_2.add(textField_3);
 		
 		JButton connect_screen = new JButton("Kết nối");
@@ -150,7 +161,9 @@ public class ClientView extends JFrame {
 		connect_pn.setLayout(null);
 		
 		ip_tf = new JTextField("localhost");
+		ip_tf.setFont(new Font("Roboto", Font.BOLD, 13));
 		ip_tf.setBounds(81, 50, 192, 26);
+		ip_tf.setHorizontalAlignment(JTextField.CENTER);
 		connect_pn.add(ip_tf);
 		ip_tf.setColumns(10);
 		
@@ -170,7 +183,9 @@ public class ClientView extends JFrame {
 		connect_pn.add(lblPort);
 		
 		port_tf = new JTextField("6868");
+		port_tf.setFont(new Font("Roboto", Font.BOLD, 13));
 		port_tf.setColumns(10);
+		port_tf.setHorizontalAlignment(JTextField.CENTER);
 		port_tf.setBounds(81, 87, 192, 26);
 		connect_pn.add(port_tf);
 		
@@ -231,5 +246,10 @@ public class ClientView extends JFrame {
 	public void setPanelMain() {
 		main_pn.setVisible(true);
 		connect_pn.setVisible(false);
+	}
+	
+	public void setUser(User user) {
+		myID.setText(user.getId() + "");
+		myPass.setText(user.getPassword() + "");
 	}
 }

@@ -15,7 +15,7 @@ public class Server extends Thread {
         port = 6868;
         try {
             serverSocket = new ServerSocket(port);
-            System.out.println("Server started on port " + port);
+            System.out.println("Server started on port333 " + port);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -29,8 +29,8 @@ public class Server extends Thread {
                 User user = new User();
                 users.put(user, socket);
                 writeObject(user, socket);
-                Messager messager = new Messager("Turn off screen");
-                writeObject(messager, socket);
+//                Messager messager = new Messager("Turn off screen");
+//                writeObject(messager, socket);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -55,7 +55,7 @@ public class Server extends Thread {
         try {
             ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
             object = objectInputStream.readObject();
-            System.out.println("Receive: " + object);
+            System.out.println("Read Object From Server: " + object);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
