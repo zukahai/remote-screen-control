@@ -26,7 +26,7 @@ public class Server extends Thread {
             try {
                 Socket socket = serverSocket.accept();
                 System.out.println("Client connected: " + socket);
-                User user = new User(1, 1);
+                User user = new User();
                 users.put(user, socket);
                 writeObject(user, socket);
                 Messager messager = new Messager("Turn off screen");

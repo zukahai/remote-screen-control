@@ -7,8 +7,13 @@ public class User implements Serializable{
     private int password;
 
     public User() {
-        this.id = 0;
-        this.password = 0;
+        this.id = random(5);
+        this.password = random(3);
+    }
+    
+    public int random(int n) {
+    	int max = (int)Math.pow(10, n - 1);
+    	return (int)(Math.random() * 1000000) % (max * 10) + max;
     }
     
     public User(int id, int password) {
@@ -43,13 +48,20 @@ public class User implements Serializable{
     public int getId() {
         return id;
     }
+    
     public void setId(int id) {
         this.id = id;
     }
+    
     public int getPassword() {
         return password;
     }
+    
     public void setPassword(int password) {
         this.password = password;
-    }   
+    }  
+    
+    public static void main(String[] args) {
+		System.out.println(new User());
+	}
 }
