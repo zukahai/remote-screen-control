@@ -14,11 +14,21 @@ public class ClientController extends Thread{
 	
 	public ClientController() {
 		clientView = new ClientView();
+		
 		clientView.connect_server.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String ip = clientView.ip_tf.getText();
 				int port = Integer.parseInt(clientView.port_tf.getText());
 				client = new Client(ip, port);
+			}
+		});
+		
+		clientView.connect_screen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int id = Integer.parseInt(clientView.idTf.getText());
+				int pass = Integer.parseInt(clientView.passTf.getText());
+				User user = new User(id, pass);
+				client.writeObjectToServer(user);
 			}
 		});
 	}

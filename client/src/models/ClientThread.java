@@ -6,18 +6,19 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class ClientThread extends Thread{
-    private Client client;
+    private Socket socket;
+    private User user;
 
-    public ClientThread(Client client) {
-        this.client = client;
+    public ClientThread(Socket socket) {
+        this.socket = socket;
     }
 
     @Override
     public void run() {
         while (true) {
-            Object object = readObject(client.getSocket());
+            Object object = readObject(socket);
             if (object instanceof User) {
-                client.setUser((User) object);
+                this.user = (User)(object);
                 System.out.println("Object: " + object);
             }
 
@@ -63,4 +64,12 @@ public class ClientThread extends Thread{
         }
         return object;
     }
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 }

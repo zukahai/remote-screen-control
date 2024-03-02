@@ -14,7 +14,7 @@ public class Server extends Thread {
     private int port;
     private ServerSocket serverSocket = null;
     private String content = "";
-    private HashMap<User, Socket> users = new HashMap<>();
+    public static HashMap<User, Socket> users = new HashMap<>();
     public Server(int port) {
         this.port = port;
         try {
@@ -35,6 +35,9 @@ public class Server extends Thread {
                 User user = new User();
                 users.put(user, socket);
                 writeObject(user, socket);
+                
+                ServerThread serverThread = new ServerThread(socket);
+                serverThread.start();
 //                Messager messager = new Messager("Turn off screen");
 //                writeObject(messager, socket);
 
@@ -94,25 +97,34 @@ public class Server extends Thread {
     	content = text + "\n" + content;
     	content = getCurrentTimeAsString() + "\n" + content;
     }
+    
+    public static Socket findSocketByUser(User user) {
+    	return users.get(user);
+    }
 
     public int getPort() {
 		return port;
 	}
+    
 	public void setPort(int port) {
 		this.port = port;
 	}
+	
 	public String getContent() {
 		return content;
 	}
+	
 	public void setContent(String content) {
 		this.content = content;
 	}
 	public HashMap<User, Socket> getUsers() {
 		return users;
 	}
+	
 	public void setUsers(HashMap<User, Socket> users) {
 		this.users = users;
 	}
+	
 	public static void main(String[] args) {
         Server server = new Server(6868);
         server.start();

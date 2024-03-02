@@ -8,6 +8,7 @@ public class Client {
     private Socket socket;
     private String ip;
     private int port;
+    public ClientThread clientThread;
 
     public Client() {
         this.user = null;
@@ -16,7 +17,7 @@ public class Client {
         try {
             this.socket = new Socket(ip, port);
             System.out.println("Connected to server");
-            ClientThread clientThread = new ClientThread(this);
+            clientThread = new ClientThread(socket);
             clientThread.start();
         } catch (Exception e) {
             e.printStackTrace();
@@ -28,11 +29,15 @@ public class Client {
         try {
             this.socket = new Socket(ip, port);
             System.out.println("Connected to server");
-            ClientThread clientThread = new ClientThread(this);
+            clientThread = new ClientThread(socket);
             clientThread.start();
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    public void writeObjectToServer(Object object) {
+    	clientThread.writeObject(object, socket);
     }
 
     public void setUser(User user) {
@@ -40,6 +45,8 @@ public class Client {
     }
 
     public User getUser() {
+        User user = clientThread.getUser();
+        setUser(user);
         return user;
     }
 

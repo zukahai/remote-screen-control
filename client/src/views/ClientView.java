@@ -29,11 +29,11 @@ public class ClientView extends JFrame {
 	public JTextField port_tf;
 	private JTextField myID;
 	private JTextField myPass;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	public JTextField idTf;
+	public JTextField passTf;
 	private JPanel connect_pn;
 	private JPanel main_pn;
-
+	public JButton connect_screen;
 	public JButton connect_server;
 
 	/**
@@ -128,15 +128,15 @@ public class ClientView extends JFrame {
 		panel_1_2.setBounds(0, 161, 283, 171);
 		main_pn.add(panel_1_2);
 		
-		textField_2 = new JTextField();
-		textField_2.setBackground(Color.decode("#acadaf"));
-		textField_2.setFont(new Font("Roboto", Font.BOLD, 13));
-		textField_2.setColumns(10);
-		textField_2.setBounds(70, 50, 203, 26);
-		textField_2.setHorizontalAlignment(JTextField.CENTER);
-		panel_1_2.add(textField_2);
+		idTf = new JTextField();
+		idTf.setBackground(Color.decode("#acadaf"));
+		idTf.setFont(new Font("Roboto", Font.BOLD, 13));
+		idTf.setColumns(10);
+		idTf.setBounds(70, 50, 203, 26);
+		idTf.setHorizontalAlignment(JTextField.CENTER);
+		panel_1_2.add(idTf);
 		
-		JLabel lblNewLabel_1 = new JLabel("IP");
+		JLabel lblNewLabel_1 = new JLabel("ID");
 		lblNewLabel_1.setForeground(Color.decode("#fa78af"));
 		lblNewLabel_1.setFont(new Font("Roboto", Font.PLAIN, 11));
 		lblNewLabel_1.setBounds(10, 56, 61, 14);
@@ -154,19 +154,15 @@ public class ClientView extends JFrame {
 		lblPort_1.setBounds(10, 93, 61, 14);
 		panel_1_2.add(lblPort_1);
 		
-		textField_3 = new JTextField();
-		textField_3.setBackground(Color.decode("#acadaf"));
-		textField_3.setFont(new Font("Roboto", Font.BOLD, 13));
-		textField_3.setColumns(10);
-		textField_3.setBounds(70, 87, 203, 26);
-		textField_3.setHorizontalAlignment(JTextField.CENTER);
-		panel_1_2.add(textField_3);
+		passTf = new JTextField();
+		passTf.setBackground(Color.decode("#acadaf"));
+		passTf.setFont(new Font("Roboto", Font.BOLD, 13));
+		passTf.setColumns(10);
+		passTf.setBounds(70, 87, 203, 26);
+		passTf.setHorizontalAlignment(JTextField.CENTER);
+		panel_1_2.add(passTf);
 		
-		JButton connect_screen = new JButton("Kết nối");
-		connect_screen.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		connect_screen = new JButton("Kết nối");
 		connect_screen.setFont(new Font("Roboto", Font.PLAIN, 11));
 		connect_screen.setBounds(101, 125, 89, 23);
 		panel_1_2.add(connect_screen);
