@@ -13,11 +13,13 @@ import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ServerView extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField portTf;
+	public JTextField portTf;
 	public JButton startBt;
 	public JTextArea contentServer;
 	public JLabel ipv4;
@@ -41,6 +43,7 @@ public class ServerView extends JFrame {
 	 * Create the frame.
 	 */
 	public ServerView() {
+		setTitle("Máy chủ");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 481, 377);
 		contentPane = new JPanel();
@@ -78,6 +81,7 @@ public class ServerView extends JFrame {
 		portTf.setForeground(Color.decode("#85ccf2"));
 		portTf.setFont(new Font("Roboto", Font.PLAIN, 12));
 		portTf.setBounds(66, 8, 136, 20);
+		portTf.setHorizontalAlignment(JTextField.CENTER);
 		startPanel.add(portTf);
 		portTf.setColumns(10);
 		
@@ -109,5 +113,10 @@ public class ServerView extends JFrame {
 	
 	public void setIPv4(String text) {
 		ipv4.setText(text);
+	}
+	
+	public void disableButtonConnect() {
+		startBt.setText("Máy chủ đang hoạt động");
+		startBt.setEnabled(false);
 	}
 }

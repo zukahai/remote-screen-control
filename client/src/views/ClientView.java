@@ -55,6 +55,7 @@ public class ClientView extends JFrame {
 	 * Create the frame.
 	 */
 	public ClientView() {
+		setTitle("Điều khiển màn hình");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 920, 450);
 		contentPane = new JPanel();

@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.net.InetAddress;
@@ -11,12 +13,14 @@ import java.net.InetAddress;
 public class Server extends Thread {
     private int port;
     private ServerSocket serverSocket = null;
+    private String content = "";
     private HashMap<User, Socket> users = new HashMap<>();
-    public Server() {
-        port = 6868;
+    public Server(int port) {
+        this.port = port;
         try {
             serverSocket = new ServerSocket(port);
-            System.out.println("Server started on port333 " + port);
+            System.out.println("Máy chủ đã khởi động ở cổng " + port);
+            addContent("Máy chủ đã khởi động ở cổng " + port);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -26,7 +30,8 @@ public class Server extends Thread {
         while (true) {
             try {
                 Socket socket = serverSocket.accept();
-                System.out.println("Client connected: " + socket);
+                System.out.println("Client kết nối:\n" + socket);
+                addContent("Client kết nối:\n" + socket);
                 User user = new User();
                 users.put(user, socket);
                 writeObject(user, socket);
@@ -71,16 +76,45 @@ public class Server extends Thread {
     	String ip = "";
     	try {
     		InetAddress myIP=InetAddress.getLocalHost();
-            System.out.println("Địa chỉ IP của tôi là:");
             ip = myIP.getHostAddress();
+            System.out.println("Địa chỉ IP của tôi là: " + ip);
     	} catch (Exception e) {
 			// TODO: handle exception
 		}
     	return ip;
     }
+    
+    public static String getCurrentTimeAsString() {
+        LocalTime currentTime = LocalTime.now();
+        return currentTime.getHour() + " giờ " + currentTime.getMinute() + " phút " + currentTime.getSecond() + " giây.";
+    }
+    
+    public void addContent(String text) {
+    	content = "____________________________________________________________" + "\n" + content;
+    	content = text + "\n" + content;
+    	content = getCurrentTimeAsString() + "\n" + content;
+    }
 
-    public static void main(String[] args) {
-        Server server = new Server();
+    public int getPort() {
+		return port;
+	}
+	public void setPort(int port) {
+		this.port = port;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public HashMap<User, Socket> getUsers() {
+		return users;
+	}
+	public void setUsers(HashMap<User, Socket> users) {
+		this.users = users;
+	}
+	public static void main(String[] args) {
+        Server server = new Server(6868);
         server.start();
     }
 }
