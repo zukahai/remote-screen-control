@@ -6,6 +6,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.net.InetAddress;
 
 public class Server extends Thread {
     private int port;
@@ -64,6 +65,18 @@ public class Server extends Thread {
             e.printStackTrace();
         }
         return object;
+    }
+    
+    public static String getIPv4() {
+    	String ip = "";
+    	try {
+    		InetAddress myIP=InetAddress.getLocalHost();
+            System.out.println("Địa chỉ IP của tôi là:");
+            ip = myIP.getHostAddress();
+    	} catch (Exception e) {
+			// TODO: handle exception
+		}
+    	return ip;
     }
 
     public static void main(String[] args) {
