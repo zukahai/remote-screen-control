@@ -3,6 +3,8 @@ package controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import models.Client;
 import models.Messager;
 import models.User;
@@ -30,6 +32,18 @@ public class ClientController extends Thread{
 				int pass = Integer.parseInt(clientView.passTf.getText());
 				User user = new User(id, pass);
 				Messager messager = new Messager("connect", user);
+				client.writeObjectToServer(messager);
+			}
+		});
+		
+		clientView.screenCapture.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (client.getUserConnect() == null) {
+					JOptionPane.showMessageDialog(null, "Chưa kết nối đến máy khác");
+					return;
+				}
+				User userConnect = client.getUserConnect();
+				Messager messager = new Messager("Screen Capture", userConnect);
 				client.writeObjectToServer(messager);
 			}
 		});

@@ -3,15 +3,12 @@ package models;
 import java.net.Socket;
 
 public class Client {
-    private User user;
-    private User userConnect;
     private Socket socket;
     private String ip;
     private int port;
     public ClientThread clientThread;
 
     public Client() {
-        this.user = null;
         ip = "localhost";
         port = 6868;
         try {
@@ -25,7 +22,6 @@ public class Client {
     }
     
     public Client(String ip, int port) {
-        this.user = null;
         try {
             this.socket = new Socket(ip, port);
             System.out.println("Connected to server");
@@ -41,7 +37,7 @@ public class Client {
     }
 
     public void setUser(User user) {
-        this.user = user;
+        clientThread.setUser(user);
     }
 
     public User getUser() {
@@ -75,11 +71,11 @@ public class Client {
     }
 
     public User getUserConnect() {
-		return userConnect;
+		return clientThread.getUserConnect();
 	}
 
 	public void setUserConnect(User userConnect) {
-		this.userConnect = userConnect;
+		clientThread.setUserConnect(userConnect);
 	}
 
 	public static void main(String[] args) {

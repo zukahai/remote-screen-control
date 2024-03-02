@@ -35,6 +35,7 @@ public class ClientView extends JFrame {
 	private JPanel main_pn;
 	public JButton connect_screen;
 	public JButton connect_server;
+	public JButton screenCapture;
 
 	/**
 	 * Launch the application.
@@ -224,13 +225,9 @@ public class ClientView extends JFrame {
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
-		JButton screen_shot = new JButton("Screen Shot");
-		screen_shot.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		screen_shot.setBounds(10, 11, 257, 113);
-		panel_1.add(screen_shot);
+		screenCapture = new JButton("Screen Shot");
+		screenCapture.setBounds(10, 11, 257, 113);
+		panel_1.add(screenCapture);
 		
 		JButton btnNewButton_1 = new JButton("New button");
 		btnNewButton_1.setBounds(277, 11, 257, 113);

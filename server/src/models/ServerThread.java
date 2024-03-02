@@ -14,6 +14,7 @@ public class ServerThread extends Thread{
 
 	@Override
 	public void run() {
+		Messager temp = null;
 		while(true) {
 			Object object = readObject(socket);
 			System.out.println("Read from client: " + object);
@@ -27,13 +28,24 @@ public class ServerThread extends Thread{
 						Socket socket = Server.findSocketByUser(user);
 						if (socket != null) {
 							System.out.println("Connect success");
-							Messager messager2 = new Messager("Connect success", user);
-							writeObject(messager2, this.socket);
-							Messager messager3 = new Messager("Have connected");
-							writeObject(messager3, socket);
+							temp = new Messager("Connect success", user);
+							writeObject(temp, this.socket);
+							temp = new Messager("notification", new String("Có một kết nối mới"));
+							writeObject(temp, socket);
 						} else {
 							System.out.println("Connect fail");
+							temp = new Messager("notification", new String("Sai ID hoặc pass"));
+							writeObject(temp, this.socket);
 						}
+						break;
+					}
+					case "Screen Capture": {
+						User userConnect = (User) messager.getObject();
+						Socket socketClient = Server.findSocketByUser(userConnect);
+						temp = new Messager("Screen Capture");
+						writeObject(temp, socketClient);
+						temp = new Messager("notification", new String("Đã gửi yêu cầu chụp ảnh màn hình"));
+						writeObject(temp, this.socket);
 						break;
 					}
 				}

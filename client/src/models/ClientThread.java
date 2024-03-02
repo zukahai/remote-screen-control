@@ -5,6 +5,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
+import javax.swing.JOptionPane;
+
+import utils.ScreenCapture;
+
 public class ClientThread extends Thread{
     private Socket socket;
     private User user;
@@ -33,7 +37,16 @@ public class ClientThread extends Thread{
                         User user = (User) messager.getObject();
                         this.userConnect = user;
                         System.out.println("Connect success " + user.getId());
+                        JOptionPane.showMessageDialog(null, "Kết nối thành công tới ID = " + user.getId());
                         break;
+                    case "Screen Capture":
+                    	new ScreenCapture();
+                    	JOptionPane.showMessageDialog(null, "Đã chụp ảnh màn hình");
+                    	break;
+                    case "notification":
+                    	String text = (String) messager.getObject();
+                    	JOptionPane.showMessageDialog(null, text);
+                    	break;
                 
                     default:
                         break;
