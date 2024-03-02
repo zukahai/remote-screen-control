@@ -51,8 +51,7 @@ public class Server extends Thread {
 		try {
 			ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
 			objectOutputStream.writeObject(object);
-			System.out.println("Send to client: " + object);
-            System.out.println("Socket: " + socket);
+			System.out.println("WriteObject to Client: " + object);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

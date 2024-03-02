@@ -44,6 +44,11 @@ public class User implements Serializable{
         }
         return true;
     }
+    
+    @Override
+    public int hashCode() {
+		return id;
+    }
 
     public int getId() {
         return id;

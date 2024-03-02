@@ -8,6 +8,7 @@ import java.net.Socket;
 public class ClientThread extends Thread{
     private Socket socket;
     private User user;
+    private User userConnect;
 
     public ClientThread(Socket socket) {
         this.socket = socket;
@@ -24,10 +25,14 @@ public class ClientThread extends Thread{
 
             if (object instanceof Messager) {
                 Messager messager = (Messager) object;
-                System.out.println("Messager: " + messager);
                 switch (messager.getText()) {
                     case "Turn off screen":
                         System.out.println("Off");
+                        break;
+                    case "Connect success":
+                        User user = (User) messager.getObject();
+                        this.userConnect = user;
+                        System.out.println("Connect success " + user.getId());
                         break;
                 
                     default:
@@ -41,8 +46,7 @@ public class ClientThread extends Thread{
 		try {
 			ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
 			objectOutputStream.writeObject(object);
-			System.out.println("Send: " + object);
-            System.out.println("Socket: " + socket);
+			System.out.println("WriteObject to Server: " + object);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -54,7 +58,7 @@ public class ClientThread extends Thread{
         try {
             ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
             object = objectInputStream.readObject();
-            System.out.println("Receive: " + object);
+            System.out.println("ReadObject from Server: " + object);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -71,5 +75,13 @@ public class ClientThread extends Thread{
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public User getUserConnect() {
+		return userConnect;
+	}
+
+	public void setUserConnect(User userConnect) {
+		this.userConnect = userConnect;
 	}
 }

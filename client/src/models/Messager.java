@@ -14,11 +14,17 @@ public class Messager implements Serializable {
     public Messager(String text) {
         this.text = text;
     }
+    
+    public Messager(String text, Object object) {
+        this.text = text;
+        this.object = object;
+    }
 
     public String toString() {
-        return "Messager{" +
-                "text='" + text + '\'' +
-                '}';
+        return "Messager[\n" +
+                "\ttext='" + text + '\'' + '\n' +
+                "\tObject=" + object + '\n' +
+                ']';
     }
 
     public String getText() {

@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import models.Client;
+import models.Messager;
 import models.User;
 import views.ClientView;
 
@@ -28,7 +29,8 @@ public class ClientController extends Thread{
 				int id = Integer.parseInt(clientView.idTf.getText());
 				int pass = Integer.parseInt(clientView.passTf.getText());
 				User user = new User(id, pass);
-				client.writeObjectToServer(user);
+				Messager messager = new Messager("connect", user);
+				client.writeObjectToServer(messager);
 			}
 		});
 	}
