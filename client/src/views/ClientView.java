@@ -16,10 +16,14 @@ import javax.swing.JInternalFrame;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.JSeparator;
 
 public class ClientView extends JFrame {
@@ -33,8 +37,8 @@ public class ClientView extends JFrame {
 	public JTextField passTf;
 	private JPanel connect_pn;
 	private JPanel main_pn;
-	public JButton connect_screen;
-	public JButton connect_server;
+	public JButton connectScreen;
+	public JButton connectServer;
 	public JButton screenCapture;
 
 	/**
@@ -58,7 +62,7 @@ public class ClientView extends JFrame {
 	public ClientView() {
 		setTitle("Điều khiển màn hình");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 920, 450);
+		setBounds(100, 100, 620, 450);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.decode("#323333"));
 		contentPane.setBorder(new CompoundBorder());
@@ -100,7 +104,7 @@ public class ClientView extends JFrame {
 		panel_1_1.add(lblId);
 		
 		JLabel lblChoPhpKt = new JLabel("Cho phép kết nối", SwingConstants.CENTER);
-		lblChoPhpKt.setForeground(Color.decode("#fa7d66"));
+		lblChoPhpKt.setForeground(Color.decode("#85ccf2"));
 		lblChoPhpKt.setFont(new Font("Roboto", Font.PLAIN, 17));
 		lblChoPhpKt.setBounds(10, 11, 263, 14);
 		panel_1_1.add(lblChoPhpKt);
@@ -144,7 +148,7 @@ public class ClientView extends JFrame {
 		panel_1_2.add(lblNewLabel_1);
 		
 		JLabel lbliuKhinMn = new JLabel("Điều khiển màn hình máy khác", SwingConstants.CENTER);
-		lbliuKhinMn.setForeground(Color.decode("#fa7d66"));
+		lbliuKhinMn.setForeground(Color.decode("#85ccf2"));
 		lbliuKhinMn.setFont(new Font("Roboto", Font.PLAIN, 17));
 		lbliuKhinMn.setBounds(10, 11, 263, 14);
 		panel_1_2.add(lbliuKhinMn);
@@ -163,10 +167,12 @@ public class ClientView extends JFrame {
 		passTf.setHorizontalAlignment(JTextField.CENTER);
 		panel_1_2.add(passTf);
 		
-		connect_screen = new JButton("Kết nối");
-		connect_screen.setFont(new Font("Roboto", Font.PLAIN, 11));
-		connect_screen.setBounds(101, 125, 89, 23);
-		panel_1_2.add(connect_screen);
+		connectScreen = new JButton("Kết nối");
+		connectScreen.setFont(new Font("Roboto", Font.PLAIN, 11));
+		connectScreen.setBackground(Color.decode("#3d3b37"));
+		connectScreen.setForeground(Color.decode("#85ccf2"));
+		connectScreen.setBounds(101, 125, 89, 23);
+		panel_1_2.add(connectScreen);
 		
 		connect_pn = new JPanel();
 		connect_pn.setBackground(Color.decode("#2f3239"));
@@ -189,7 +195,8 @@ public class ClientView extends JFrame {
 		connect_pn.add(lblNewLabel);
 		
 		JLabel lblKtNiTi = new JLabel("Kết nối tới máy chủ", SwingConstants.CENTER);
-		lblKtNiTi.setForeground(Color.decode("#fa7d66"));
+		lblKtNiTi.setBackground(Color.decode("#3d3b37"));
+		lblKtNiTi.setForeground(Color.decode("#85ccf2"));
 		lblKtNiTi.setFont(new Font("Roboto", Font.PLAIN, 17));
 		lblKtNiTi.setBounds(10, 11, 263, 14);
 		connect_pn.add(lblKtNiTi);
@@ -208,50 +215,61 @@ public class ClientView extends JFrame {
 		port_tf.setBounds(81, 87, 192, 26);
 		connect_pn.add(port_tf);
 		
-		connect_server = new JButton("Kết nối");
-		connect_server.setFont(new Font("Roboto", Font.PLAIN, 11));
-		connect_server.addActionListener(new ActionListener() {
+		connectServer = new JButton("Kết nối");
+		connectServer.setFont(new Font("Roboto", Font.PLAIN, 11));
+		connectServer.setBackground(Color.decode("#3d3b37"));
+		connectServer.setForeground(Color.decode("#85ccf2"));
+		connectServer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setPanelMain();
 			}
 		});
-		connect_server.setBounds(101, 125, 89, 23);
-		connect_pn.add(connect_server);
+		connectServer.setBounds(101, 125, 89, 23);
+		connect_pn.add(connectServer);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.decode("#292a30"));
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_1.setBounds(336, 11, 546, 384);
+		panel_1.setBounds(336, 11, 257, 384);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
-		screenCapture = new JButton("Screen Shot");
-		screenCapture.setBounds(10, 11, 257, 113);
+		screenCapture = new JButton("");
+		screenCapture.setIcon(getIcon("a"));
+		screenCapture.setBounds(10, 11, 113, 113);
 		panel_1.add(screenCapture);
 		
-		JButton btnNewButton_1 = new JButton("New button");
-		btnNewButton_1.setBounds(277, 11, 257, 113);
-		panel_1.add(btnNewButton_1);
+		JButton screenCapture_1 = new JButton("Screen Shot");
+		screenCapture_1.setBounds(133, 11, 113, 113);
+		panel_1.add(screenCapture_1);
 		
-		JButton btnNewButton_2 = new JButton("New button");
-		btnNewButton_2.setBounds(10, 135, 257, 113);
-		panel_1.add(btnNewButton_2);
+		JButton screenCapture_2 = new JButton("Screen Shot");
+		screenCapture_2.setBounds(10, 135, 113, 113);
+		panel_1.add(screenCapture_2);
 		
-		JButton btnNewButton_1_1 = new JButton("New button");
-		btnNewButton_1_1.setBounds(277, 135, 257, 113);
-		panel_1.add(btnNewButton_1_1);
+		JButton screenCapture_1_1 = new JButton("Screen Shot");
+		screenCapture_1_1.setBounds(133, 135, 113, 113);
+		panel_1.add(screenCapture_1_1);
 		
-		JButton btnNewButton_3 = new JButton("New button");
-		btnNewButton_3.setBounds(10, 259, 257, 113);
-		panel_1.add(btnNewButton_3);
+		JButton screenCapture_3 = new JButton("Screen Shot");
+		screenCapture_3.setBounds(10, 260, 113, 113);
+		panel_1.add(screenCapture_3);
 		
-		JButton btnNewButton_1_2 = new JButton("New button");
-		btnNewButton_1_2.setBounds(277, 259, 257, 113);
-		panel_1.add(btnNewButton_1_2);
+		JButton screenCapture_1_2 = new JButton("Screen Shot");
+		screenCapture_1_2.setBounds(133, 260, 113, 113);
+		panel_1.add(screenCapture_1_2);
 		setLocationRelativeTo(null);
 		
 		setPanelConnect();
 		setVisible(true);
+	}
+	
+	public Icon getIcon(String name) {
+		int width = 113;
+		int height = 113;
+		Image image = new ImageIcon(getClass().getResource("/icons/" + name + ".png")).getImage();
+		Icon icon = new ImageIcon(image.getScaledInstance(width, height, image.SCALE_SMOOTH));
+		return icon;
 	}
 	
 	public void setPanelConnect() {

@@ -18,7 +18,7 @@ public class ClientController extends Thread{
 	public ClientController() {
 		clientView = new ClientView();
 		
-		clientView.connect_server.addActionListener(new ActionListener() {
+		clientView.connectServer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String ip = clientView.ip_tf.getText();
 				int port = Integer.parseInt(clientView.port_tf.getText());
@@ -26,7 +26,7 @@ public class ClientController extends Thread{
 			}
 		});
 		
-		clientView.connect_screen.addActionListener(new ActionListener() {
+		clientView.connectScreen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int id = Integer.parseInt(clientView.idTf.getText());
 				int pass = Integer.parseInt(clientView.passTf.getText());
@@ -38,6 +38,10 @@ public class ClientController extends Thread{
 		
 		clientView.screenCapture.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (client == null) {
+					JOptionPane.showMessageDialog(null, "Chưa kết nối đến máy chủ");
+					return;
+				}
 				if (client.getUserConnect() == null) {
 					JOptionPane.showMessageDialog(null, "Chưa kết nối đến máy khác");
 					return;
