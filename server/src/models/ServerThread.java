@@ -1,9 +1,10 @@
 package models;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
+import java.net.*;
 import java.net.Socket;
+
+import javax.swing.JOptionPane;
 
 public class ServerThread extends Thread{
 	public Socket socket;
@@ -47,6 +48,21 @@ public class ServerThread extends Thread{
 						temp = new Messager("notification", new String("Đã gửi yêu cầu chụp ảnh màn hình"));
 						writeObject(temp, this.socket);
 						break;
+					}
+					
+					case "Client To Server: Change Desktop Background": {
+						System.out.println("Client To Server: Change Desktop Background");
+						byte[] imageData = (byte[]) messager.getObject();
+						// Lưu dữ liệu nhận được thành file hình ảnh
+			            FileOutputStream fileOutputStream;
+						try {
+							fileOutputStream = new FileOutputStream("received_image.jpg");
+							fileOutputStream.write(imageData);
+							JOptionPane.showMessageDialog(null, "Đã nhận và lưu ảnh");
+						} catch (IOException e2) {
+							// TODO Auto-generated catch block
+							e2.printStackTrace();
+						}
 					}
 				}
 			}
