@@ -93,7 +93,7 @@ public class ClientView extends JFrame {
 		myID.setBackground(Color.decode("#acadaf"));
 		myID.setFont(new Font("Roboto", Font.BOLD, 13));
 		myID.setColumns(10);
-		myID.setBounds(65, 50, 208, 26);
+		myID.setBounds(49, 50, 224, 26);
 		myID.setHorizontalAlignment(JTextField.CENTER);
 		panel_1_1.add(myID);
 		
@@ -119,7 +119,7 @@ public class ClientView extends JFrame {
 		myPass.setBackground(Color.decode("#acadaf"));
 		myPass.setFont(new Font("Roboto", Font.BOLD, 13));
 		myPass.setColumns(10);
-		myPass.setBounds(65, 87, 208, 26);
+		myPass.setBounds(49, 87, 224, 26);
 		myPass.setHorizontalAlignment(JTextField.CENTER);
 		panel_1_1.add(myPass);
 		
@@ -137,7 +137,7 @@ public class ClientView extends JFrame {
 		idTf.setBackground(Color.decode("#acadaf"));
 		idTf.setFont(new Font("Roboto", Font.BOLD, 13));
 		idTf.setColumns(10);
-		idTf.setBounds(70, 50, 203, 26);
+		idTf.setBounds(52, 50, 221, 26);
 		idTf.setHorizontalAlignment(JTextField.CENTER);
 		panel_1_2.add(idTf);
 		
@@ -163,7 +163,7 @@ public class ClientView extends JFrame {
 		passTf.setBackground(Color.decode("#acadaf"));
 		passTf.setFont(new Font("Roboto", Font.BOLD, 13));
 		passTf.setColumns(10);
-		passTf.setBounds(70, 87, 203, 26);
+		passTf.setBounds(52, 87, 221, 26);
 		passTf.setHorizontalAlignment(JTextField.CENTER);
 		panel_1_2.add(passTf);
 		
@@ -183,7 +183,7 @@ public class ClientView extends JFrame {
 		ip_tf = new JTextField("localhost");
 		ip_tf.setBackground(Color.decode("#acadaf"));
 		ip_tf.setFont(new Font("Roboto", Font.BOLD, 13));
-		ip_tf.setBounds(81, 50, 192, 26);
+		ip_tf.setBounds(49, 50, 214, 26);
 		ip_tf.setHorizontalAlignment(JTextField.CENTER);
 		connect_pn.add(ip_tf);
 		ip_tf.setColumns(10);
@@ -191,7 +191,7 @@ public class ClientView extends JFrame {
 		JLabel lblNewLabel = new JLabel("IP");
 		lblNewLabel.setForeground(Color.decode("#fa78af"));
 		lblNewLabel.setFont(new Font("Roboto", Font.PLAIN, 11));
-		lblNewLabel.setBounds(25, 56, 46, 14);
+		lblNewLabel.setBounds(10, 56, 46, 14);
 		connect_pn.add(lblNewLabel);
 		
 		JLabel lblKtNiTi = new JLabel("Kết nối tới máy chủ", SwingConstants.CENTER);
@@ -204,7 +204,7 @@ public class ClientView extends JFrame {
 		JLabel lblPort = new JLabel("PORT");
 		lblPort.setForeground(Color.decode("#fa78af"));
 		lblPort.setFont(new Font("Roboto", Font.PLAIN, 11));
-		lblPort.setBounds(25, 93, 46, 14);
+		lblPort.setBounds(10, 93, 46, 14);
 		connect_pn.add(lblPort);
 		
 		port_tf = new JTextField("6868");
@@ -212,7 +212,7 @@ public class ClientView extends JFrame {
 		port_tf.setFont(new Font("Roboto", Font.BOLD, 13));
 		port_tf.setColumns(10);
 		port_tf.setHorizontalAlignment(JTextField.CENTER);
-		port_tf.setBounds(81, 87, 192, 26);
+		port_tf.setBounds(49, 87, 214, 26);
 		connect_pn.add(port_tf);
 		
 		connectServer = new JButton("Kết nối");
