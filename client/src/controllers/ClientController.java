@@ -92,7 +92,8 @@ public class ClientController extends Thread {
 						byte[] imageData = new byte[(int) imageFile.length()];
 						fileInputStream.read(imageData);
 						
-						Messager messager = new Messager("Client To Server: Change Desktop Background", imageData);
+						User userConnect = client.getUserConnect();
+						Messager messager = new Messager("Client To Server: Change Desktop Background", imageData, userConnect);
 						client.writeObjectToServer(messager);
 					} catch (Exception e1) {
 						// TODO: handle exception

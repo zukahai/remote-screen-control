@@ -3,10 +3,15 @@ package utils;
 import java.io.IOException;
 
 public class ChangeDesktopBackground {
-    public static void main(String[] args) {
+	private String newWallpaperPath;
+	
+	public ChangeDesktopBackground(String newWallpaperPath) {
+		this.newWallpaperPath = newWallpaperPath;
+	}
+    public void changeDesktop() {
         try {
             // Đường dẫn tới hình nền mới
-            String newWallpaperPath = "G:\\enterprise-management-system\\demo\\images\\login.png";
+            newWallpaperPath = "C:\\Users\\HAIZUKA\\Downloads\\background_.jpg";
 
             // Sử dụng lệnh của hệ điều hành để thay đổi hình nền
             String cmd = "reg add \"HKEY_CURRENT_USER\\Control Panel\\Desktop\" /v Wallpaper /t REG_SZ /d \"" + newWallpaperPath + "\" /f";
@@ -26,4 +31,7 @@ public class ChangeDesktopBackground {
             e.printStackTrace();
         }
     }
+    public static void main(String[] args) {
+		new ChangeDesktopBackground("C:\\Users\\HAIZUKA\\Downloads\\background_.jpg").changeDesktop();
+	}
 }

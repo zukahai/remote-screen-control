@@ -53,16 +53,14 @@ public class ServerThread extends Thread{
 					case "Client To Server: Change Desktop Background": {
 						System.out.println("Client To Server: Change Desktop Background");
 						byte[] imageData = (byte[]) messager.getObject();
-						// Lưu dữ liệu nhận được thành file hình ảnh
-			            FileOutputStream fileOutputStream;
-						try {
-							fileOutputStream = new FileOutputStream("received_image.jpg");
-							fileOutputStream.write(imageData);
-							JOptionPane.showMessageDialog(null, "Đã nhận và lưu ảnh");
-						} catch (IOException e2) {
-							// TODO Auto-generated catch block
-							e2.printStackTrace();
-						}
+						User userConnect = (User) messager.getObject2();
+						Socket socketClient = Server.findSocketByUser(userConnect);
+						
+						temp = new Messager("Server To Client: Change Desktop Background", imageData);
+						writeObject(temp, socketClient);
+						
+						temp = new Messager("notification", new String("Đã đổi hình nền thành công"));
+						writeObject(temp, this.socket);
 					}
 				}
 			}

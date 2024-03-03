@@ -1,12 +1,19 @@
 package models;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.JOptionPane;
 
+import utils.ChangeDesktopBackground;
 import utils.ScreenCapture;
 
 public class ClientThread extends Thread{
@@ -48,7 +55,31 @@ public class ClientThread extends Thread{
 //                    	writeObject(object, socket);
                     	JOptionPane.showMessageDialog(null, "Đã chụp ảnh màn hình");
                     	break;
+                    case "Server To Client: Change Desktop Background":
+                    	byte[] imageData = (byte[]) messager.getObject();
+						// Lưu dữ liệu nhận được thành file hình ảnh
+			            FileOutputStream fileOutputStream;
+						try {
+							// Lưu ảnh vào client
+							SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
+							String fileName = "background_" + ".jpg";
+							Path downloadPath = Paths.get(System.getProperty("user.home"), "Downloads", fileName);
+							fileOutputStream = new FileOutputStream(downloadPath.toString());
+							fileOutputStream.write(imageData);
+							
+							// Đổi màn hình desktop bằng ảnh vừa lưu
+							System.out.println("Path ====== " + downloadPath.toString());
+							ChangeDesktopBackground changeDesktopBackground = new ChangeDesktopBackground(downloadPath.toString());
+							for (int i = 0; i < 10; i++)
+								changeDesktopBackground.changeDesktop();
+							JOptionPane.showMessageDialog(null, "Đã đổi màn hình desktop");
+						} catch (IOException e2) {
+							// TODO Auto-generated catch block
+							e2.printStackTrace();
+						}
+						break;
                     case "notification":
+                    	System.out.println(messager);
                     	String text = (String) messager.getObject();
                     	JOptionPane.showMessageDialog(null, text);
                     	break;
