@@ -20,6 +20,7 @@ public class ClientThread extends Thread{
 
     @Override
     public void run() {
+    	Messager temp;
         while (true) {
             Object object = readObject(socket);
             if (object instanceof User) {
@@ -39,8 +40,12 @@ public class ClientThread extends Thread{
                         System.out.println("Connect success " + user.getId());
                         JOptionPane.showMessageDialog(null, "Kết nối thành công tới ID = " + user.getId());
                         break;
-                    case "Screen Capture":
-                    	new ScreenCapture();
+                    case "Server To Client: Screen Capture":
+                    	System.out.println("Server To Client: Screen Capture");
+                    	ScreenCapture screenCapture = new ScreenCapture();
+                    	screenCapture.saveImage();
+//                    	temp = new Messager("Client To Server: Capture Success", screenCapture);
+//                    	writeObject(object, socket);
                     	JOptionPane.showMessageDialog(null, "Đã chụp ảnh màn hình");
                     	break;
                     case "notification":

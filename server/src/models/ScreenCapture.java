@@ -1,4 +1,4 @@
-package utils;
+package models;
 
 import java.awt.AWTException;
 import java.awt.Rectangle;

@@ -98,6 +98,7 @@ public class Server extends Thread {
     }
     
     public static Socket findSocketByUser(User user) {
+    	System.out.println("List user:");
     	for (User u: users.keySet())
     		System.out.println(u);
     	return users.get(user);

@@ -235,27 +235,32 @@ public class ClientView extends JFrame {
 		panel_1.setLayout(null);
 		
 		screenCapture = new JButton("");
-		screenCapture.setIcon(getIcon("a"));
+		screenCapture.setIcon(getIcon("screen_capture"));
 		screenCapture.setBounds(10, 11, 113, 113);
 		panel_1.add(screenCapture);
 		
-		JButton screenCapture_1 = new JButton("Screen Shot");
+		JButton screenCapture_1 = new JButton("");
 		screenCapture_1.setBounds(133, 11, 113, 113);
+		screenCapture_1.setIcon(getIcon("coming_soon"));
 		panel_1.add(screenCapture_1);
 		
-		JButton screenCapture_2 = new JButton("Screen Shot");
+		JButton screenCapture_2 = new JButton("");
 		screenCapture_2.setBounds(10, 135, 113, 113);
+		screenCapture_2.setIcon(getIcon("coming_soon"));
 		panel_1.add(screenCapture_2);
 		
-		JButton screenCapture_1_1 = new JButton("Screen Shot");
+		JButton screenCapture_1_1 = new JButton("");
 		screenCapture_1_1.setBounds(133, 135, 113, 113);
+		screenCapture_1_1.setIcon(getIcon("coming_soon"));
 		panel_1.add(screenCapture_1_1);
 		
-		JButton screenCapture_3 = new JButton("Screen Shot");
+		JButton screenCapture_3 = new JButton("");
+		screenCapture_3.setIcon(getIcon("coming_soon"));
 		screenCapture_3.setBounds(10, 260, 113, 113);
 		panel_1.add(screenCapture_3);
 		
-		JButton screenCapture_1_2 = new JButton("Screen Shot");
+		JButton screenCapture_1_2 = new JButton("");
+		screenCapture_1_2.setIcon(getIcon("coming_soon"));
 		screenCapture_1_2.setBounds(133, 260, 113, 113);
 		panel_1.add(screenCapture_1_2);
 		setLocationRelativeTo(null);

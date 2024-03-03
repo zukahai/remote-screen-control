@@ -42,7 +42,7 @@ public class ServerThread extends Thread{
 					case "Screen Capture": {
 						User userConnect = (User) messager.getObject();
 						Socket socketClient = Server.findSocketByUser(userConnect);
-						temp = new Messager("Screen Capture");
+						temp = new Messager("Server To Client: Screen Capture");
 						writeObject(temp, socketClient);
 						temp = new Messager("notification", new String("Đã gửi yêu cầu chụp ảnh màn hình"));
 						writeObject(temp, this.socket);
