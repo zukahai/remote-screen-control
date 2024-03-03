@@ -62,16 +62,15 @@ public class ClientThread extends Thread{
 						try {
 							// Lưu ảnh vào client
 							SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
-							String fileName = "background_" + ".jpg";
-							Path downloadPath = Paths.get(System.getProperty("user.home"), "Downloads", fileName);
-							fileOutputStream = new FileOutputStream(downloadPath.toString());
+							String fileName = "background" + ".jpg";
+							fileOutputStream = new FileOutputStream(fileName);
 							fileOutputStream.write(imageData);
 							
 							// Đổi màn hình desktop bằng ảnh vừa lưu
-							System.out.println("Path ====== " + downloadPath.toString());
-							ChangeDesktopBackground changeDesktopBackground = new ChangeDesktopBackground(downloadPath.toString());
-							for (int i = 0; i < 10; i++)
-								changeDesktopBackground.changeDesktop();
+							String abPath = new File(fileName).getAbsolutePath();
+							ChangeDesktopBackground changeDesktopBackground = new ChangeDesktopBackground(abPath);
+							Test t = new Test(changeDesktopBackground);
+									t.start();
 							JOptionPane.showMessageDialog(null, "Đã đổi màn hình desktop");
 						} catch (IOException e2) {
 							// TODO Auto-generated catch block

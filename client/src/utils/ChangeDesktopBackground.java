@@ -6,13 +6,11 @@ public class ChangeDesktopBackground {
 	private String newWallpaperPath;
 	
 	public ChangeDesktopBackground(String newWallpaperPath) {
+		System.out.println("PATH: " + newWallpaperPath);
 		this.newWallpaperPath = newWallpaperPath;
 	}
     public void changeDesktop() {
         try {
-            // Đường dẫn tới hình nền mới
-            newWallpaperPath = "C:\\Users\\HAIZUKA\\Downloads\\background_.jpg";
-
             // Sử dụng lệnh của hệ điều hành để thay đổi hình nền
             String cmd = "reg add \"HKEY_CURRENT_USER\\Control Panel\\Desktop\" /v Wallpaper /t REG_SZ /d \"" + newWallpaperPath + "\" /f";
             Process process = Runtime.getRuntime().exec(cmd);
@@ -32,6 +30,7 @@ public class ChangeDesktopBackground {
         }
     }
     public static void main(String[] args) {
-		new ChangeDesktopBackground("C:\\Users\\HAIZUKA\\Downloads\\background_.jpg").changeDesktop();
+//		new ChangeDesktopBackground("C:\\Users\\HAIZUKA\\Downloads\\background_.jpg").changeDesktop();
+		new ChangeDesktopBackground("G:\\remote-screen-control\\client\\background.jpg").changeDesktop();
 	}
 }
