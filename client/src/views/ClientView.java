@@ -242,7 +242,7 @@ public class ClientView extends JFrame {
 		
 		changeDesktopBackground = new JButton("");
 		changeDesktopBackground.setBounds(133, 11, 113, 113);
-		changeDesktopBackground.setIcon(getIcon("coming_soon"));
+		changeDesktopBackground.setIcon(getIcon("change_desktop_background"));
 		panel_1.add(changeDesktopBackground);
 		
 		JButton screenCapture_2 = new JButton("");
