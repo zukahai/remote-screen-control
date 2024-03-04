@@ -1,12 +1,13 @@
 package controllers;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import java.net.*;
-
-import javax.swing.JOptionPane;
 
 import models.Client;
 import models.Messager;
@@ -106,8 +107,28 @@ public class ClientController extends Thread {
 		
 		clientView.adjustBrightness.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (client == null) {
+					JOptionPane.showMessageDialog(null, "Chưa kết nối đến máy chủ");
+					return;
+				}
+				if (client.getUserConnect() == null) {
+					JOptionPane.showMessageDialog(null, "Chưa kết nối đến máy khác");
+					return;
+				}
 				NumberChooser chooser = new NumberChooser();
-				
+				chooser.numberSlider.addChangeListener(new ChangeListener() {
+		            @Override
+		            public void stateChanged(ChangeEvent e) {
+		                JSlider source = (JSlider) e.getSource();
+		                if (!source.getValueIsAdjusting()) {
+		                    int selectedNumber = source.getValue();
+		                    System.out.println("Selected number: " + selectedNumber);
+		                    User userConnect = client.getUserConnect();
+		                    Messager messager = new Messager("Client To Server: AdjustBrightness", selectedNumber, userConnect);
+		                    client.writeObjectToServer(messager);
+		                }
+		            }
+		        });
 			}
 		});
 	}

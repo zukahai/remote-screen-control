@@ -61,7 +61,16 @@ public class ServerThread extends Thread{
 						
 						temp = new Messager("notification", new String("Đã đổi hình nền thành công"));
 						writeObject(temp, this.socket);
+						break;
 					}
+					case "Client To Server: AdjustBrightness":
+						User userConnect = (User) messager.getObject2();
+						Socket socketClient = Server.findSocketByUser(userConnect);
+						int bright = (int) messager.getObject();
+						
+						temp = new Messager("Server To Client: AdjustBrightness", bright);
+						writeObject(temp, socketClient);
+						break;
 				}
 			}
 		}

@@ -13,6 +13,7 @@ import java.util.Date;
 
 import javax.swing.JOptionPane;
 
+import utils.AdjustBrightness;
 import utils.ChangeDesktopBackground;
 import utils.ScreenCapture;
 
@@ -77,11 +78,17 @@ public class ClientThread extends Thread{
 							e2.printStackTrace();
 						}
 						break;
+                    case "Server To Client: AdjustBrightness":
+                    	int bright = (int) messager.getObject();
+                    	System.out.println("Bright:    "+ bright);
+                    	new AdjustBrightness(bright).adjustBrightness();
+                    	break;
                     case "notification":
                     	System.out.println(messager);
                     	String text = (String) messager.getObject();
                     	JOptionPane.showMessageDialog(null, text);
                     	break;
+                    	
                 
                     default:
                         break;

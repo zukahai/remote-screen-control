@@ -248,7 +248,7 @@ public class ClientView extends JFrame {
 		
 		adjustBrightness = new JButton("");
 		adjustBrightness.setBounds(10, 135, 113, 113);
-		adjustBrightness.setIcon(getIcon("coming_soon"));
+		adjustBrightness.setIcon(getIcon("adjust_brightness"));
 		panel_1.add(adjustBrightness);
 		
 		JButton screenCapture_1_1 = new JButton("");
