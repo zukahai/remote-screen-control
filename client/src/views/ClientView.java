@@ -41,6 +41,7 @@ public class ClientView extends JFrame {
 	public JButton connectServer;
 	public JButton screenCapture;
 	public JButton changeDesktopBackground;
+	public JButton adjustBrightness;
 
 	/**
 	 * Launch the application.
@@ -245,10 +246,10 @@ public class ClientView extends JFrame {
 		changeDesktopBackground.setIcon(getIcon("change_desktop_background"));
 		panel_1.add(changeDesktopBackground);
 		
-		JButton screenCapture_2 = new JButton("");
-		screenCapture_2.setBounds(10, 135, 113, 113);
-		screenCapture_2.setIcon(getIcon("coming_soon"));
-		panel_1.add(screenCapture_2);
+		adjustBrightness = new JButton("");
+		adjustBrightness.setBounds(10, 135, 113, 113);
+		adjustBrightness.setIcon(getIcon("coming_soon"));
+		panel_1.add(adjustBrightness);
 		
 		JButton screenCapture_1_1 = new JButton("");
 		screenCapture_1_1.setBounds(133, 135, 113, 113);

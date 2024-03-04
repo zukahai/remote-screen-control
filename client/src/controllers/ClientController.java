@@ -12,6 +12,7 @@ import models.Client;
 import models.Messager;
 import models.User;
 import views.ClientView;
+import views.NumberChooser;
 
 public class ClientController extends Thread {
 	private Client client;
@@ -100,6 +101,13 @@ public class ClientController extends Thread {
 						e1.printStackTrace();
 					}
 				}
+			}
+		});
+		
+		clientView.adjustBrightness.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				NumberChooser chooser = new NumberChooser();
+				
 			}
 		});
 	}
