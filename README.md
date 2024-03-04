@@ -1,5 +1,7 @@
 # Remote Screen Control
 
+<p align="center"> <img src="./server/images/remote-contro-1.png" alt="remote-contro" /> </p>
+
 ## Giới thiệu
 
 Sử dụng giao thức TCP, mô hình Client-Server, xây dựng chương trình điều khiển màn hình từ xa bằng Java.
@@ -15,6 +17,5 @@ Là một hệ thống gồm 1 server và nhiều client truy cập cùng 1 lúc
 3. **Quản lý yêu cầu và phản hồi**: Server phải có khả năng quản lý đồng thời nhiều kết nối từ các client và xử lý các yêu cầu điều khiển tương ứng. Sau khi nhận và xử lý yêu cầu từ client, server sẽ gửi lại phản hồi cho client để thông báo về kết quả của yêu cầu.
 
 4. **Điều khiển màn hình từ xa**: Khi server xác định máy tính mục tiêu cho một yêu cầu điều khiển, nó sẽ gửi các lệnh tương ứng tới máy tính đó. Các lệnh này có thể bao gồm chụp màn hình, thay đổi hình nên, tăng giảm độ sáng v.v.
-
 
 ## Cách thức hoạt động
