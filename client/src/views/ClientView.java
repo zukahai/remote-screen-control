@@ -20,6 +20,8 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Image;
@@ -266,9 +268,48 @@ public class ClientView extends JFrame {
 		screenCapture_1_2.setBounds(133, 260, 113, 113);
 		panel_1.add(screenCapture_1_2);
 		setLocationRelativeTo(null);
+		this.addHoverListener();
 		
 		setPanelConnect();
 		setVisible(true);
+	}
+	
+	public void addHoverListener() {
+		screenCapture.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                screenCapture.setIcon(getIcon("screen_capture_hover"));
+            }
+        });
+
+		screenCapture.addMouseListener(new MouseAdapter() {
+            public void mouseExited(MouseEvent e) {
+            	screenCapture.setIcon(getIcon("screen_capture"));
+            }
+        });
+		
+		adjustBrightness.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+            	adjustBrightness.setIcon(getIcon("adjust_brightness_hover"));
+            }
+        });
+
+		adjustBrightness.addMouseListener(new MouseAdapter() {
+            public void mouseExited(MouseEvent e) {
+            	adjustBrightness.setIcon(getIcon("adjust_brightness"));
+            }
+        });
+		
+		changeDesktopBackground.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+            	changeDesktopBackground.setIcon(getIcon("change_desktop_background_hover"));
+            }
+        });
+
+		changeDesktopBackground.addMouseListener(new MouseAdapter() {
+            public void mouseExited(MouseEvent e) {
+            	changeDesktopBackground.setIcon(getIcon("change_desktop_background"));
+            }
+        });
 	}
 	
 	public Icon getIcon(String name) {
