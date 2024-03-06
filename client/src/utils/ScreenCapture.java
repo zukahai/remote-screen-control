@@ -13,7 +13,7 @@ import javax.imageio.ImageIO;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
-public class ScreenCapture implements Serializable{
+public class ScreenCapture{
 	private BufferedImage screenFullImage;
 	private String fileName;
 	private String format;

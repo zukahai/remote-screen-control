@@ -2,17 +2,25 @@ package utils;
 
 import java.io.IOException;
 
-public class AdjustBrightness {
+public class TurnOffScreen {
     private int brightnessLevel;
 
-    public AdjustBrightness(int brightnessLevel) {
+    public TurnOffScreen(int brightnessLevel) {
         this.brightnessLevel = brightnessLevel;
     }
 
     public void adjustBrightness() {
         try {
             // Sử dụng PowerShell để điều chỉnh độ sáng màn hình
-            String cmd = "powershell.exe (Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods).WmiSetBrightness(1, " + brightnessLevel + ")";
+        	String cmd = "powershell.exe Add-Type -TypeDefinition \"@"
+        	        + "using System;"
+        	        + "using System.Runtime.InteropServices;"
+        	        + "public class PInvoke {"
+        	        + "[DllImport(\"user32.dll\")]"
+        	        + "public static extern int SendMessage(int hWnd, int hMsg, int wParam, int lParam);"
+        	        + "}"
+        	        + "@\";"
+        	        + "[PInvoke]::SendMessage(0xffff, 0x112, 0xf170, 2);";
             Process process = Runtime.getRuntime().exec(cmd);
             process.waitFor();
             if (process.exitValue() == 0) {
@@ -30,6 +38,6 @@ public class AdjustBrightness {
 
     public static void main(String[] args) {
         // Điều chỉnh độ sáng màn hình (ví dụ: giảm 50%)
-        new AdjustBrightness(100).adjustBrightness();
+        new TurnOffScreen(100).adjustBrightness();
     }
 }
