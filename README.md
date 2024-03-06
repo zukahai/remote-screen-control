@@ -114,3 +114,4 @@ Hãy chia sẻ tài khoản này cho người khác, để họ có thể điề
 Sau khi đã kết nối được máy người khác. Bạn hoàn toàn có thể thực hiện việc chụp ảnh màn hình, thay đổi hình desktop, thay đổi độ sáng, v.v. ở màn hình máy của họ
 
 ## Kết thúc
+Trên đây là các tính năng của phần mềm "Điều khiển màn hình từ xa". Trong tương lai, phần mềm sẽ phát triển thêm các tính năng khác nhau, stream màn hình từ client này sang client khác, thay tác điều khiển client chuột.
