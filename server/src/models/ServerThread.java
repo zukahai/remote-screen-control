@@ -59,7 +59,7 @@ public class ServerThread extends Thread{
 						temp = new Messager("Server To Client: Change Desktop Background", imageData);
 						writeObject(temp, socketClient);
 						
-						temp = new Messager("notification", new String("Đã đổi hình nền thành công"));
+						temp = new Messager("notification", new String("Đã gửi yêu cầu đổi hình nền"));
 						writeObject(temp, this.socket);
 						break;
 					}

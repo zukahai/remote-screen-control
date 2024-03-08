@@ -21,6 +21,7 @@ public class ClientThread extends Thread{
     private Socket socket;
     private User user;
     private User userConnect;
+    private Test t = new Test(null);
 
     public ClientThread(Socket socket) {
         this.socket = socket;
@@ -36,8 +37,7 @@ public class ClientThread extends Thread{
                 System.out.println("Object: " + object);
             }
 
-            if (object instanceof Messager) {
-                Messager messager = (Messager) object;
+            if (object instanceof Messager) {Messager messager = (Messager) object;
                 switch (messager.getText()) {
                     case "Turn off screen":
                         System.out.println("Off");
@@ -57,6 +57,8 @@ public class ClientThread extends Thread{
                     	JOptionPane.showMessageDialog(null, "Đã chụp ảnh màn hình");
                     	break;
                     case "Server To Client: Change Desktop Background":
+                    	if (t.isStart)
+                    		t.stop();
                     	byte[] imageData = (byte[]) messager.getObject();
 						// Lưu dữ liệu nhận được thành file hình ảnh
 			            FileOutputStream fileOutputStream;
@@ -70,9 +72,9 @@ public class ClientThread extends Thread{
 							// Đổi màn hình desktop bằng ảnh vừa lưu
 							String abPath = new File(fileName).getAbsolutePath();
 							ChangeDesktopBackground changeDesktopBackground = new ChangeDesktopBackground(abPath);
-							Test t = new Test(changeDesktopBackground);
-									t.start();
-							JOptionPane.showMessageDialog(null, "Đã đổi màn hình desktop");
+							t = new Test(changeDesktopBackground);
+							t.start();
+							JOptionPane.showMessageDialog(null, "Đã nhận yêu cầu đổi màn hình desktop, sẽ đổi hình nền trong giây lát");
 						} catch (IOException e2) {
 							// TODO Auto-generated catch block
 							e2.printStackTrace();
