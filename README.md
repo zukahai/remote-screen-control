@@ -8,7 +8,7 @@ Project mô phỏng việc sử dụng giao thức TCP, mô hình Client-Server,
 
 Là một hệ thống gồm 1 server và nhiều client truy cập cùng 1 lúc, 1 client có thể điều khiển màn hình của 1 máy khác, 1 máy có thể cho phép nhiều máy cùng truy cập.
 
-Cấu trúc project:
+Cấu trúc project: 
 
 ```text
 └── remote-screen-control
