@@ -256,7 +256,7 @@ public class ClientView extends JFrame {
 		
 		screenShare = new JButton("");
 		screenShare.setBounds(133, 135, 113, 113);
-		screenShare.setIcon(getIcon("coming_soon"));
+		screenShare.setIcon(getIcon("screen_share"));
 		panel_1.add(screenShare);
 		
 		JButton screenCapture_3 = new JButton("");
@@ -311,6 +311,18 @@ public class ClientView extends JFrame {
             	changeDesktopBackground.setIcon(getIcon("change_desktop_background"));
             }
         });
+
+		screenShare.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+            	screenShare.setIcon(getIcon("screen_share_hover"));
+            }
+        });
+
+		screenShare.addMouseListener(new MouseAdapter() {
+            public void mouseExited(MouseEvent e) {
+            	screenShare.setIcon(getIcon("screen_share"));
+            }
+        });
 	}
 	
 	public Icon getIcon(String name) {
@@ -335,4 +347,5 @@ public class ClientView extends JFrame {
 		myID.setText(user.getId() + "");
 		myPass.setText(user.getPassword() + "");
 	}
+
 }
