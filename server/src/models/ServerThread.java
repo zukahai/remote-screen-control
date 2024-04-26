@@ -16,6 +16,8 @@ public class ServerThread extends Thread{
 	@Override
 	public void run() {
 		Messager temp = null;
+		Socket socketClient = null;
+		User userConnect = null;
 		while(true) {
 			Object object = readObject(socket);
 			System.out.println("Read from client: " + object);
@@ -41,8 +43,8 @@ public class ServerThread extends Thread{
 						break;
 					}
 					case "Screen Capture": {
-						User userConnect = (User) messager.getObject();
-						Socket socketClient = Server.findSocketByUser(userConnect);
+						userConnect = (User) messager.getObject();
+						socketClient = Server.findSocketByUser(userConnect);
 						temp = new Messager("Server To Client: Screen Capture");
 						writeObject(temp, socketClient);
 						temp = new Messager("notification", new String("Đã gửi yêu cầu chụp ảnh màn hình"));
@@ -53,8 +55,8 @@ public class ServerThread extends Thread{
 					case "Client To Server: Change Desktop Background": {
 						System.out.println("Client To Server: Change Desktop Background");
 						byte[] imageData = (byte[]) messager.getObject();
-						User userConnect = (User) messager.getObject2();
-						Socket socketClient = Server.findSocketByUser(userConnect);
+						userConnect = (User) messager.getObject2();
+						socketClient = Server.findSocketByUser(userConnect);
 						
 						temp = new Messager("Server To Client: Change Desktop Background", imageData);
 						writeObject(temp, socketClient);
@@ -64,11 +66,24 @@ public class ServerThread extends Thread{
 						break;
 					}
 					case "Client To Server: AdjustBrightness":
-						User userConnect = (User) messager.getObject2();
-						Socket socketClient = Server.findSocketByUser(userConnect);
+						userConnect = (User) messager.getObject2();
+						socketClient = Server.findSocketByUser(userConnect);
 						int bright = (int) messager.getObject();
 						
 						temp = new Messager("Server To Client: AdjustBrightness", bright);
+						writeObject(temp, socketClient);
+						break;
+					case "Client To Server: ScreenShare":
+						userConnect = (User) messager.getObject();
+						socketClient = Server.findSocketByUser(userConnect);
+						User user = (User) messager.getObject2();
+						temp = new Messager("Server To Client: ScreenShare", user);
+						writeObject(temp, socketClient);
+						break;
+					case "Client To Server: Screen":
+						userConnect = (User) messager.getObject();
+						socketClient = Server.findSocketByUser(userConnect);
+						temp = new Messager("Server To Client: Screen", messager.getObject2());
 						writeObject(temp, socketClient);
 						break;
 				}

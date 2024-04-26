@@ -14,10 +14,12 @@ import models.Messager;
 import models.User;
 import views.ClientView;
 import views.NumberChooser;
+import views.ScreenShare;
 
 public class ClientController extends Thread {
 	private Client client;
 	private ClientView clientView;
+	private ScreenShare screenShare;
 	private boolean isConnect = false;
 
 	public ClientController() {
@@ -131,6 +133,26 @@ public class ClientController extends Thread {
 		        });
 			}
 		});
+		
+		clientView.screenShare.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (client == null) {
+					JOptionPane.showMessageDialog(null, "Chưa kết nối đến máy chủ");
+					return;
+				}
+				if (client.getUserConnect() == null) {
+					JOptionPane.showMessageDialog(null, "Chưa kết nối đến máy khác");
+					return;
+				}
+				
+				screenShare = new ScreenShare();
+				
+				User userConnect = client.getUserConnect();
+				User user = client.getUser();
+                Messager messager = new Messager("Client To Server: ScreenShare", userConnect, user);
+                client.writeObjectToServer(messager);
+			}
+		});
 	}
 
 	@Override
@@ -150,6 +172,11 @@ public class ClientController extends Thread {
 					clientView.setPanelMain();
 					System.out.println("Connect");
 				}
+			}
+			if (screenShare != null) {
+				ImageIcon c = client.getScreen();
+				if (c != null)
+					screenShare.setIcon(c);
 			}
 		}
 	}

@@ -1,6 +1,7 @@
 package utils;
 
 import java.awt.AWTException;
+import java.io.ByteArrayOutputStream;
 import java.awt.Rectangle;
 import java.awt.Robot;
 import java.awt.Toolkit;
@@ -17,6 +18,7 @@ public class ScreenCapture{
 	private BufferedImage screenFullImage;
 	private String fileName;
 	private String format;
+	private byte[] imageData;
 	
 	public ScreenCapture() {
 		try {
@@ -29,9 +31,16 @@ public class ScreenCapture{
             // Tạo tên file dựa trên thời gian hiện tại
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
             fileName = "screenshot_" + dateFormat.format(new Date()) + "." + format;
+            
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ImageIO.write(screenFullImage, "png", baos);
+            imageData = baos.toByteArray();
         } catch (AWTException e) {
             System.err.println(e);
-        }
+        } catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 		
 	public void saveImage() {
@@ -51,7 +60,23 @@ public class ScreenCapture{
 		}
 	}
 
-    public static void main(String[] args) {
+    public BufferedImage getScreenFullImage() {
+		return screenFullImage;
+	}
+
+	public void setScreenFullImage(BufferedImage screenFullImage) {
+		this.screenFullImage = screenFullImage;
+	}
+
+	public byte[] getImageData() {
+		return imageData;
+	}
+
+	public void setImageData(byte[] imageData) {
+		this.imageData = imageData;
+	}
+
+	public static void main(String[] args) {
         new ScreenCapture();
     }
 }

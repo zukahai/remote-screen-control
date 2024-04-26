@@ -44,6 +44,7 @@ public class ClientView extends JFrame {
 	public JButton screenCapture;
 	public JButton changeDesktopBackground;
 	public JButton adjustBrightness;
+	public JButton screenShare;
 
 	/**
 	 * Launch the application.
@@ -253,10 +254,10 @@ public class ClientView extends JFrame {
 		adjustBrightness.setIcon(getIcon("adjust_brightness"));
 		panel_1.add(adjustBrightness);
 		
-		JButton screenCapture_1_1 = new JButton("");
-		screenCapture_1_1.setBounds(133, 135, 113, 113);
-		screenCapture_1_1.setIcon(getIcon("coming_soon"));
-		panel_1.add(screenCapture_1_1);
+		screenShare = new JButton("");
+		screenShare.setBounds(133, 135, 113, 113);
+		screenShare.setIcon(getIcon("coming_soon"));
+		panel_1.add(screenShare);
 		
 		JButton screenCapture_3 = new JButton("");
 		screenCapture_3.setIcon(getIcon("coming_soon"));

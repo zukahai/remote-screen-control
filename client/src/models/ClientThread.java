@@ -1,5 +1,8 @@
 package models;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -11,7 +14,9 @@ import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 import utils.AdjustBrightness;
 import utils.ChangeDesktopBackground;
@@ -22,6 +27,7 @@ public class ClientThread extends Thread{
     private User user;
     private User userConnect;
     private Test t = new Test(null);
+    private ImageIcon screen = null;
 
     public ClientThread(Socket socket) {
         this.socket = socket;
@@ -85,6 +91,28 @@ public class ClientThread extends Thread{
                     	System.out.println("Bright:    "+ bright);
                     	new AdjustBrightness(bright).adjustBrightness();
                     	break;
+                    case "Server To Client: ScreenShare":
+                    	user = (User) messager.getObject();
+                    	
+                    	Timer time = new Timer(50, new ActionListener() {
+							
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								// TODO Auto-generated method stub
+								ScreenCapture screenCapture1 = new ScreenCapture();
+		                    	byte[] imageData = screenCapture1.getImageData();
+		                    	Messager temp = new Messager("Client To Server: Screen", user, imageData);
+		                    	writeObject(temp, socket);
+							}
+						});
+                    	time.start();
+                    	
+                    	break;
+                    case "Server To Client: Screen":
+                    	imageData = (byte[]) messager.getObject();
+                    	screen = new ImageIcon(imageData);
+                    	System.out.println("Chia sẻ màn hình");
+                    	break;
                     case "notification":
                     	System.out.println(messager);
                     	String text = (String) messager.getObject();
@@ -140,5 +168,13 @@ public class ClientThread extends Thread{
 
 	public void setUserConnect(User userConnect) {
 		this.userConnect = userConnect;
+	}
+
+	public ImageIcon getScreen() {
+		return screen;
+	}
+
+	public void setScreen(ImageIcon screen) {
+		this.screen = screen;
 	}
 }

@@ -2,6 +2,8 @@ package models;
 
 import java.net.Socket;
 
+import javax.swing.ImageIcon;
+
 public class Client {
     private Socket socket;
     private String ip;
@@ -73,6 +75,14 @@ public class Client {
     public User getUserConnect() {
 		return clientThread.getUserConnect();
 	}
+    
+    public ImageIcon getScreen() {
+		return clientThread.getScreen();
+	}
+    
+    public void setScreen(ImageIcon imageIcon) {
+    	clientThread.setScreen(imageIcon);
+    }
 
 	public void setUserConnect(User userConnect) {
 		clientThread.setUserConnect(userConnect);
