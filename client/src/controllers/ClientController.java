@@ -162,6 +162,7 @@ public class ClientController extends Thread {
             public void keyPressed(KeyEvent e) {
                 Messager messager = new Messager("Client To Server: KeyPressed", e.getKeyCode(), client.getUserConnect());
 				client.writeObjectToServer(messager);
+				JOptionPane.showMessageDialog(null, "Key: " + e.getKeyCode());
             }
 
             @Override
