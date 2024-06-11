@@ -132,6 +132,7 @@ public class ClientController extends Thread {
 			}
 		});
 		
+		screenShare.screenShareButton.addActionListener(e -> screenShare.hideCursor());
 		clientView.screenShare.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (client == null) {

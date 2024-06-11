@@ -1,5 +1,6 @@
 package views;
 
+import java.awt.Cursor;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -7,8 +8,11 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.GridLayout;
+import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 
 public class ScreenShare extends JFrame {
 
@@ -44,6 +48,7 @@ public class ScreenShare extends JFrame {
         contentPane.setLayout(new GridLayout(1, 0, 0, 0));
 
         screenShareButton = new JButton("");
+        // screenShareButton.addActionListener(e -> hideCursor());
         contentPane.add(screenShareButton);
         this.setVisible(true);
 
@@ -52,6 +57,13 @@ public class ScreenShare extends JFrame {
         // Đảm bảo JFrame có thể nhận sự kiện bàn phím
         setFocusable(true);
         requestFocusInWindow();
+    }
+
+    public void hideCursor() {
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        BufferedImage cursorImage = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
+        Cursor blankCursor = toolkit.createCustomCursor(cursorImage, new Point(0, 0), "blank cursor");
+        this.setCursor(blankCursor);
     }
 
     public void setIcon(ImageIcon icon) {
