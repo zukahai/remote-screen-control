@@ -3,7 +3,7 @@ package utils;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class MoveMouse {
+public class Mouse {
     static int x = -1;
     static int y = -1;
 
@@ -59,7 +59,39 @@ public class MoveMouse {
         return position;
     }
 
+    public static void click() {
+        try {
+            java.awt.Robot robot = new java.awt.Robot();
+            robot.mousePress(java.awt.event.InputEvent.BUTTON1_DOWN_MASK);
+            robot.mouseRelease(java.awt.event.InputEvent.BUTTON1_DOWN_MASK);
+        } catch (java.awt.AWTException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void rightClick() {
+        try {
+            java.awt.Robot robot = new java.awt.Robot();
+            robot.mousePress(java.awt.event.InputEvent.BUTTON3_DOWN_MASK);
+            robot.mouseRelease(java.awt.event.InputEvent.BUTTON3_DOWN_MASK);
+        } catch (java.awt.AWTException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void doubleClick() {
+        try {
+            java.awt.Robot robot = new java.awt.Robot();
+            robot.mousePress(java.awt.event.InputEvent.BUTTON1_DOWN_MASK);
+            robot.mouseRelease(java.awt.event.InputEvent.BUTTON1_DOWN_MASK);
+            robot.mousePress(java.awt.event.InputEvent.BUTTON1_DOWN_MASK);
+            robot.mouseRelease(java.awt.event.InputEvent.BUTTON1_DOWN_MASK);
+        } catch (java.awt.AWTException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
-        MoveMouse.moveMouseXY(-100, 100);
+        Mouse.moveMouseXY(-100, 100);
     }
 }

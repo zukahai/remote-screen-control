@@ -23,7 +23,7 @@ import javax.swing.Timer;
 
 import utils.AdjustBrightness;
 import utils.ChangeDesktopBackground;
-import utils.MoveMouse;
+import utils.Mouse;
 import utils.RobotKey;
 import utils.ScreenCapture;
 
@@ -133,7 +133,11 @@ public class ClientThread extends Thread{
 
 					case "Server To Client: Mouse":
 						ArrayList<Integer> list = (ArrayList<Integer>) messager.getObject();
-						MoveMouse.moveMouse(list.get(0), list.get(1));
+						Mouse.moveMouse(list.get(0), list.get(1));
+						break;
+					
+					case "Server To Client: MouseClick":
+						Mouse.click();
 						break;
                 
                     default:

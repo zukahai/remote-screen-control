@@ -10,7 +10,7 @@ import java.io.*;
 import models.Client;
 import models.Messager;
 import models.User;
-import utils.MoveMouse;
+import utils.Mouse;
 import views.ClientView;
 import views.NumberChooser;
 import views.ScreenShare;
@@ -145,7 +145,36 @@ public class ClientController extends Thread {
 				}
 				
 				screenShare = new ScreenShare();
+
+				screenShare.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						Messager messager = new Messager("Client To Server: MouseClick", client.getUserConnect());
+						client.writeObjectToServer(messager);
+					}
+		
+					@Override
+					public void mousePressed(MouseEvent e) {
+						System.out.println("Mouse Pressed at: (" + e.getX() + ", " + e.getY() + ")");
+					}
+		
+					@Override
+					public void mouseReleased(MouseEvent e) {
+						System.out.println("Mouse Released at: (" + e.getX() + ", " + e.getY() + ")");
+					}
+		
+					@Override
+					public void mouseEntered(MouseEvent e) {
+						System.out.println("Mouse Entered");
+					}
+		
+					@Override
+					public void mouseExited(MouseEvent e) {
+						System.out.println("Mouse Exited");
+					}
+				});
 				screenShare.screenShareButton.addKeyListener(new KeyListener() {
+					
 					@Override
 					public void keyTyped(KeyEvent e) {
 						// Không cần xử lý sự kiện này trong trường hợp này
@@ -171,8 +200,8 @@ public class ClientController extends Thread {
 				Timer timer = new Timer(10, new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						System.out.println("Mouse: " + MoveMouse.getMousePosition());
-						Messager messager = new Messager("Client To Server: Mouse", userConnect, MoveMouse.getMousePosition());
+						System.out.println("Mouse: " + Mouse.getMousePosition());
+						Messager messager = new Messager("Client To Server: Mouse", userConnect, Mouse.getMousePosition());
 						client.writeObjectToServer(messager);
 
 					}
