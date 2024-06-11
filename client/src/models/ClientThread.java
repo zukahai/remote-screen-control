@@ -123,10 +123,8 @@ public class ClientThread extends Thread{
 						
 					case "Server To Client: KeyPressed":
 						int key = (int) messager.getObject();
-						JOptionPane.showMessageDialog(null, "Key: " + key);
 						RobotKey.keyPress(key);
 						break;
-                    	
                 
                     default:
                         break;
