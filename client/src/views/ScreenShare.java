@@ -13,7 +13,7 @@ import java.awt.event.KeyListener;
 public class ScreenShare extends JFrame {
 
     private JPanel contentPane;
-    private JButton screenShare;
+    public JButton screenShareButton;
 
     /**
      * Launch the application.
@@ -43,8 +43,8 @@ public class ScreenShare extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(new GridLayout(1, 0, 0, 0));
 
-        screenShare = new JButton("");
-        contentPane.add(screenShare);
+        screenShareButton = new JButton("");
+        contentPane.add(screenShareButton);
         this.setVisible(true);
 
 		System.out.println("ScreenShare is running");
@@ -55,6 +55,6 @@ public class ScreenShare extends JFrame {
     }
 
     public void setIcon(ImageIcon icon) {
-        screenShare.setIcon(icon);
+        screenShareButton.setIcon(icon);
     }
 }

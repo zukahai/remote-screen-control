@@ -144,6 +144,23 @@ public class ClientController extends Thread {
 				}
 				
 				screenShare = new ScreenShare();
+				screenShare.screenShareButton.addKeyListener(new KeyListener() {
+					@Override
+					public void keyTyped(KeyEvent e) {
+						// Không cần xử lý sự kiện này trong trường hợp này
+					}
+		
+					@Override
+					public void keyPressed(KeyEvent e) {
+						Messager messager = new Messager("Client To Server: KeyPressed", e.getKeyCode(), client.getUserConnect());
+						client.writeObjectToServer(messager);
+					}
+		
+					@Override
+					public void keyReleased(KeyEvent e) {
+						// Không cần xử lý sự kiện này trong trường hợp này
+					}
+				});
 				
 				User userConnect = client.getUserConnect();
 				User user = client.getUser();
@@ -151,25 +168,6 @@ public class ClientController extends Thread {
                 client.writeObjectToServer(messager);
 			}
 		});
-
-		clientView.screenShare.addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                // Không cần xử lý sự kiện này trong trường hợp này
-            }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-                Messager messager = new Messager("Client To Server: KeyPressed", e.getKeyCode(), client.getUserConnect());
-				client.writeObjectToServer(messager);
-				JOptionPane.showMessageDialog(null, "Key: " + e.getKeyCode());
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-                // Không cần xử lý sự kiện này trong trường hợp này
-            }
-        });
 	}
 
 	@Override
