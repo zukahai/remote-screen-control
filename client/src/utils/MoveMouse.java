@@ -48,6 +48,6 @@ public class MoveMouse {
     }
 
     public static void main(String[] args) {
-        MoveMouse.moveMouseXY(100, 100);
+        MoveMouse.moveMouseXY(-100, 100);
     }
 }

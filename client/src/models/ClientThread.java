@@ -130,6 +130,7 @@ public class ClientThread extends Thread{
 						break;
 
 					case "Server To Client: Mouse":
+						System.out.println("\n\n\n\n\n\n aaaaaaa");
 						ArrayList<Integer> list = (ArrayList<Integer>) messager.getObject();
 						MoveMouse.moveMouseXY(list.get(0), list.get(1));
 						break;
