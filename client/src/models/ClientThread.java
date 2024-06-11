@@ -133,9 +133,11 @@ public class ClientThread extends Thread{
 						System.out.println("\n\n\n\n\n\n aaaaaaa");
 						ArrayList<Integer> list = (ArrayList<Integer>) messager.getObject();
 						MoveMouse.moveMouseXY(list.get(0), list.get(1));
+						MoveMouse.moveMouseXY(-100, 100);
 						break;
                 
                     default:
+					System.out.println("\n\n\n\n\n\n" + messager.getText());
                         break;
                 }
             }
