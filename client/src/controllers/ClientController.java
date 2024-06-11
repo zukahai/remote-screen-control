@@ -171,6 +171,7 @@ public class ClientController extends Thread {
 				Timer timer = new Timer(100, new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
+						System.out.println("Mouse: " + MoveMouse.getMousePosition());
 						Messager messager = new Messager("Client To Server: Mouse", userConnect, MoveMouse.getMousePosition());
 						client.writeObjectToServer(messager);
 
