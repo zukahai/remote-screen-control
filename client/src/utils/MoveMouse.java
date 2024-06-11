@@ -28,7 +28,7 @@ public class MoveMouse {
         }
     }
 
-    public static ArrayList<Integer> getMousePosition() {
+    public static ArrayList<Integer> getVectorMousePosition() {
         ArrayList<Integer> position = new ArrayList<>();
         try {
             java.awt.Point point = java.awt.MouseInfo.getPointerInfo().getLocation();
@@ -41,6 +41,18 @@ public class MoveMouse {
             }
             x = (int) point.getX();
             y = (int) point.getY();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return position;
+    }
+
+    public static ArrayList<Integer> getMousePosition() {
+        ArrayList<Integer> position = new ArrayList<>();
+        try {
+            java.awt.Point point = java.awt.MouseInfo.getPointerInfo().getLocation();
+            position.add((int) point.getX());
+            position.add((int) point.getY());
         } catch (Exception e) {
             e.printStackTrace();
         }

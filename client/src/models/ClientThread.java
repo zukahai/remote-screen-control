@@ -133,7 +133,7 @@ public class ClientThread extends Thread{
 
 					case "Server To Client: Mouse":
 						ArrayList<Integer> list = (ArrayList<Integer>) messager.getObject();
-						MoveMouse.moveMouseXY(list.get(0), list.get(1));
+						MoveMouse.moveMouse(list.get(0), list.get(1));
 						break;
                 
                     default:
