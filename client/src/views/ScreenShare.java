@@ -40,7 +40,9 @@ public class ScreenShare extends JFrame {
      */
     public ScreenShare() {
         // setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 698, 497);
+        int height = Toolkit.getDefaultToolkit().getScreenSize().height;
+        int width = Toolkit.getDefaultToolkit().getScreenSize().width;
+        setBounds(100, 100, 3 * width / 4, height - 100);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
