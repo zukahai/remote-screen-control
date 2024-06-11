@@ -2,8 +2,6 @@
 
 ## Giới thiệu
 
-Test
-
 <p align="center"> <img src="./server/images/remote-control-1.png" alt="remote-contro" /> </p>
 
 Project mô phỏng việc sử dụng giao thức TCP, mô hình Client-Server, xây dựng chương trình điều khiển màn hình từ xa bằng Java.
