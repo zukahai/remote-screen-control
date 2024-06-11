@@ -7,8 +7,8 @@ public class User implements Serializable{
     private int password;
 
     public User() {
-        this.id = random(5);
-        this.password = random(3);
+        this.id = random(3);
+        this.password = random(2);
     }
     
     public int random(int n) {
