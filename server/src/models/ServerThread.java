@@ -86,6 +86,12 @@ public class ServerThread extends Thread{
 						temp = new Messager("Server To Client: Screen", messager.getObject2());
 						writeObject(temp, socketClient);
 						break;
+					case "Client To Server: KeyPressed":
+						userConnect = (User) messager.getObject2();
+						socketClient = Server.findSocketByUser(userConnect);
+						temp = new Messager("Server To Client: KeyPressed", messager.getObject());
+						writeObject(temp, socketClient);
+						break;
 				}
 			}
 		}

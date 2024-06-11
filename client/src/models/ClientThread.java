@@ -118,6 +118,11 @@ public class ClientThread extends Thread{
                     	String text = (String) messager.getObject();
                     	JOptionPane.showMessageDialog(null, text);
                     	break;
+						
+					case "Server To Client: KeyPressed":
+						int key = (int) messager.getObject();
+						JOptionPane.showMessageDialog(null, "Key: " + key);
+						break;
                     	
                 
                     default:

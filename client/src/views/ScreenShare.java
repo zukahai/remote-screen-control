@@ -6,9 +6,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -46,12 +43,13 @@ public class ScreenShare extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(new GridLayout(1, 0, 0, 0));
 
-        screenShare = new JButton("New button");
+        screenShare = new JButton("");
         contentPane.add(screenShare);
         this.setVisible(true);
 
+		System.out.println("ScreenShare is running");
         // Thêm KeyListener để lắng nghe sự kiện bàn phím
-        addKeyListener(new KeyListener() {
+        screenShare.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
                 // Không cần xử lý sự kiện này trong trường hợp này
