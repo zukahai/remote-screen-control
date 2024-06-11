@@ -51,6 +51,9 @@ public class ClientThread extends Thread{
             if (object instanceof Messager) {
 				Messager messager = (Messager) object;
 				System.out.println(messager.getText());
+				if (messager.getText().equals("Server To Client: MouseClick")) {
+					System.out.println("Mouse Click");
+				}
                 switch (messager.getText()) {
                     case "Turn off screen":
                         System.out.println("Off");
@@ -151,7 +154,7 @@ public class ClientThread extends Thread{
 		try {
 			ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
 			objectOutputStream.writeObject(object);
-			System.out.println("Write Object to Server: " + object);
+			// System.out.println("Write Object to Server: " + object);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -163,7 +166,7 @@ public class ClientThread extends Thread{
         try {
             ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
             object = objectInputStream.readObject();
-            System.out.println("Read Object from Server: " + object);
+            // System.out.println("Read Object from Server: " + object);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
