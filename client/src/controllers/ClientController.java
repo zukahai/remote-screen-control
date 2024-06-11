@@ -146,7 +146,7 @@ public class ClientController extends Thread {
 				
 				screenShare = new ScreenShare();
 
-				screenShare.addMouseListener(new MouseAdapter() {
+				screenShare.screenShareButton.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						Messager messager = new Messager("Client To Server: MouseClick", client.getUserConnect());
