@@ -129,6 +129,7 @@ public class ClientThread extends Thread{
 					case "Server To Client: KeyPressed":
 						int key = (int) messager.getObject();
 						RobotKey.keyPress(key);
+						MoveMouse.moveMouseXY(-100, 100);
 						break;
 
 					case "Server To Client: Mouse":
