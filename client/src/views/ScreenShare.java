@@ -48,7 +48,7 @@ public class ScreenShare extends JFrame {
         contentPane.setLayout(new GridLayout(1, 0, 0, 0));
 
         screenShareButton = new JButton("");
-        // screenShareButton.addActionListener(e -> hideCursor());
+        screenShareButton.addActionListener(e -> hideCursor());
         contentPane.add(screenShareButton);
         this.setVisible(true);
 
