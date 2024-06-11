@@ -28,7 +28,7 @@ public class MoveMouse {
         }
     }
 
-    public ArrayList<Integer> getMousePosition() {
+    public static ArrayList<Integer> getMousePosition() {
         ArrayList<Integer> position = new ArrayList<>();
         try {
             java.awt.Point point = java.awt.MouseInfo.getPointerInfo().getLocation();

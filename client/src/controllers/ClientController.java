@@ -10,6 +10,7 @@ import java.io.*;
 import models.Client;
 import models.Messager;
 import models.User;
+import utils.MoveMouse;
 import views.ClientView;
 import views.NumberChooser;
 import views.ScreenShare;
@@ -166,6 +167,16 @@ public class ClientController extends Thread {
 				User user = client.getUser();
                 Messager messager = new Messager("Client To Server: ScreenShare", userConnect, user);
                 client.writeObjectToServer(messager);
+
+				Timer timer = new Timer(100, new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						Messager messager = new Messager("Client To Server: Mouse", userConnect, MoveMouse.getMousePosition());
+						client.writeObjectToServer(messager);
+
+					}
+				});
+				timer.start();
 			}
 		});
 	}

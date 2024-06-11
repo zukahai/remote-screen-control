@@ -9,10 +9,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.lang.reflect.Array;
 import java.net.Socket;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.ImageIcon;
@@ -21,6 +23,7 @@ import javax.swing.Timer;
 
 import utils.AdjustBrightness;
 import utils.ChangeDesktopBackground;
+import utils.MoveMouse;
 import utils.RobotKey;
 import utils.ScreenCapture;
 
@@ -124,6 +127,11 @@ public class ClientThread extends Thread{
 					case "Server To Client: KeyPressed":
 						int key = (int) messager.getObject();
 						RobotKey.keyPress(key);
+						break;
+
+					case "Server To Client: Mouse":
+						ArrayList<Integer> list = (ArrayList<Integer>) messager.getObject();
+						MoveMouse.moveMouseXY(list.get(0), list.get(1));
 						break;
                 
                     default:
