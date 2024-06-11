@@ -48,7 +48,9 @@ public class ClientThread extends Thread{
                 System.out.println("Object: " + object);
             }
 
-            if (object instanceof Messager) {Messager messager = (Messager) object;
+            if (object instanceof Messager) {
+				Messager messager = (Messager) object;
+				System.out.println(messager.getText());
                 switch (messager.getText()) {
                     case "Turn off screen":
                         System.out.println("Off");
