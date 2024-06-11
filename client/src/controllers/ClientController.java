@@ -197,7 +197,7 @@ public class ClientController extends Thread {
                 Messager messager = new Messager("Client To Server: ScreenShare", userConnect, user);
                 client.writeObjectToServer(messager);
 
-				Timer timer = new Timer(10, new ActionListener() {
+				Timer timer = new Timer(100, new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						System.out.println("Mouse: " + Mouse.getMousePosition());
