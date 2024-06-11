@@ -129,18 +129,14 @@ public class ClientThread extends Thread{
 					case "Server To Client: KeyPressed":
 						int key = (int) messager.getObject();
 						RobotKey.keyPress(key);
-						MoveMouse.moveMouseXY(-100, 100);
 						break;
 
 					case "Server To Client: Mouse":
-						System.out.println("\n\n\n\n\n\n aaaaaaa");
 						ArrayList<Integer> list = (ArrayList<Integer>) messager.getObject();
 						MoveMouse.moveMouseXY(list.get(0), list.get(1));
-						MoveMouse.moveMouseXY(-100, 100);
 						break;
                 
                     default:
-					System.out.println("\n\n\n\n\n\n" + messager.getText());
                         break;
                 }
             }
