@@ -35,6 +35,9 @@ public class MoveMouse {
             if (x != -1) {
                 position.add((int) point.getX() - x);
                 position.add((int) point.getY() - y);
+            } else {
+                position.add(0);
+                position.add(0);
             }
             x = (int) point.getX();
             y = (int) point.getY();
