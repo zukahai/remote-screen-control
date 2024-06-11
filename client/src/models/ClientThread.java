@@ -150,7 +150,7 @@ public class ClientThread extends Thread{
 		try {
 			ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
 			objectOutputStream.writeObject(object);
-			System.out.println("WriteObject to Server: " + object);
+			System.out.println("Write Object to Server: " + object);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -162,7 +162,7 @@ public class ClientThread extends Thread{
         try {
             ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
             object = objectInputStream.readObject();
-            System.out.println("ReadObject from Server: " + object);
+            System.out.println("Read Object from Server: " + object);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
