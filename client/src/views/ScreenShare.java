@@ -48,23 +48,6 @@ public class ScreenShare extends JFrame {
         this.setVisible(true);
 
 		System.out.println("ScreenShare is running");
-        // Thêm KeyListener để lắng nghe sự kiện bàn phím
-        screenShare.addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                // Không cần xử lý sự kiện này trong trường hợp này
-            }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-                System.out.println("Đang bấm phím: " + KeyEvent.getKeyText(e.getKeyCode()));
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-                // Không cần xử lý sự kiện này trong trường hợp này
-            }
-        });
 
         // Đảm bảo JFrame có thể nhận sự kiện bàn phím
         setFocusable(true);
