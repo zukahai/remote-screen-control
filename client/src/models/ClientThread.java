@@ -1,5 +1,6 @@
 package models;
 
+import java.awt.Robot;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -20,6 +21,7 @@ import javax.swing.Timer;
 
 import utils.AdjustBrightness;
 import utils.ChangeDesktopBackground;
+import utils.RobotKey;
 import utils.ScreenCapture;
 
 public class ClientThread extends Thread{
@@ -122,6 +124,7 @@ public class ClientThread extends Thread{
 					case "Server To Client: KeyPressed":
 						int key = (int) messager.getObject();
 						JOptionPane.showMessageDialog(null, "Key: " + key);
+						RobotKey.keyPress(key);
 						break;
                     	
                 
