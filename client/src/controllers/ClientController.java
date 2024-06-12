@@ -209,7 +209,36 @@ public class ClientController extends Thread {
 				timer.start();
 			}
 		});
+
+		clientView.messageTf.addKeyListener(new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// Không cần xử lý sự kiện này trong trường hợp này
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// Không cần xử lý sự kiện này trong trường hợp này
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					String message = clientView.messageTf.getText();
+					if (message.equals("")) {
+						JOptionPane.showMessageDialog(null, "Không thể gửi tin nhắn rỗng");
+						return;
+					}
+					User userConnect = client.getUserConnect();
+					Messager messager = new Messager("Client To Server: Message", message, userConnect);
+					client.writeObjectToServer(messager);
+					clientView.messageTf.setText("");
+					clientView.addMessage("Tôi: " + message);
+				}
+			}
+		});
 	}
+
 
 	@Override
 	public void run() {

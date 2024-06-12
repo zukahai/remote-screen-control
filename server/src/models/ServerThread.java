@@ -104,6 +104,12 @@ public class ServerThread extends Thread{
 						temp = new Messager("Server To Client: MouseClick");
 						writeObject(temp, socketClient);
 						break;
+					case "Client To Server: Message":
+						userConnect = (User) messager.getObject();
+						socketClient = Server.findSocketByUser(userConnect);
+						temp = new Messager("Server To Client: Message", messager.getObject2());
+						writeObject(temp, socketClient);
+						break;
 				}
 			}
 		}

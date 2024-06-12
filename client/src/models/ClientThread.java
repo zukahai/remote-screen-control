@@ -142,6 +142,10 @@ public class ClientThread extends Thread{
 					case "Server To Client: MouseClick":
 						Mouse.click();
 						break;
+					case "Server To Client: Message":
+						String message = (String) messager.getObject();
+						JOptionPane.showMessageDialog(null, message);
+						break;
                 
                     default:
                         break;

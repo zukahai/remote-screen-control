@@ -49,9 +49,10 @@ public class ClientView extends JFrame {
 	public JButton changeDesktopBackground;
 	public JButton adjustBrightness;
 	public JButton screenShare;
-	private JTextField messageTf;
+	public JTextField messageTf;
 	private boolean isChat = false;
 	public JButton chatBt;
+	public JTextArea messageTa;
 
 	/**
 	 * Launch the application.
@@ -297,7 +298,7 @@ public class ClientView extends JFrame {
 		scrollPane.setBounds(10, 11, 202, 327);
 		panel_2.add(scrollPane);
 		
-		JTextArea messageTa = new JTextArea();
+		messageTa = new JTextArea();
 		messageTa.setBackground(Color.decode("#acadaf"));
 		scrollPane.setViewportView(messageTa);
 		
@@ -404,5 +405,9 @@ public class ClientView extends JFrame {
 	public void setIsChat(boolean isChat) {
 		this.isChat = isChat;
 		setSizeAll();
+	}
+
+	public void addMessage(String message) {
+		messageTa.append(message + "\n");
 	}
 }
