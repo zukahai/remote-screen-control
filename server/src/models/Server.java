@@ -104,6 +104,16 @@ public class Server extends Thread {
     	return users.get(user);
     }
 
+    public static User findUserBySocket(Socket socket) {
+    	System.out.println("List user:");
+    	for (User u: users.keySet())
+    		System.out.println(u);
+    	for (User u: users.keySet())
+    		if (users.get(u).equals(socket))
+    			return u;
+    	return null;
+    }
+
     public int getPort() {
 		return port;
 	}
