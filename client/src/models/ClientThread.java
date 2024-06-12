@@ -201,4 +201,12 @@ public class ClientThread extends Thread{
 	public String getMessageAll() {
 		return messageAll;
 	}
+
+	public void addMessage(String message) {
+		messageAll += message + "\n";
+	}
+
+	public void setMessageAll(String messageAll) {
+		this.messageAll = messageAll;
+	}
 }

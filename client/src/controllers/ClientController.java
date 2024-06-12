@@ -233,7 +233,7 @@ public class ClientController extends Thread {
 					Messager messager = new Messager("Client To Server: Message", message, userConnect);
 					client.writeObjectToServer(messager);
 					clientView.messageTf.setText("");
-					clientView.addMessage("Tôi: " + message);
+					client.addMessage("Tôi: " + message + "\n");
 				}
 			}
 		});

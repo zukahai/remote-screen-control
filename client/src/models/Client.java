@@ -92,6 +92,14 @@ public class Client {
         return clientThread.getMessageAll();
     }
 
+    public void setMessageAll(String message) {
+        clientThread.setMessageAll(message);
+    }
+
+    public void addMessage(String message) {
+        clientThread.addMessage(message);
+    }
+
 	public static void main(String[] args) {
         Client client = new Client();
     }
