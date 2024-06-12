@@ -246,7 +246,7 @@ public class ClientController extends Thread {
 		while (true) {
 			System.out.print("");
 			if (isConnect) {
-
+				clientView.messageTa.setText(client.getMessageAll());
 			} else {
 				if (client == null)
 					continue;

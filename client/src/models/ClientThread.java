@@ -1,26 +1,18 @@
 package models;
 
-import java.awt.Robot;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.lang.reflect.Array;
 import java.net.Socket;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
-
 import utils.AdjustBrightness;
 import utils.ChangeDesktopBackground;
 import utils.Mouse;
@@ -33,6 +25,7 @@ public class ClientThread extends Thread{
     private User userConnect;
     private Test t = new Test(null);
     private ImageIcon screen = null;
+	private String messageAll = "";
 
     public ClientThread(Socket socket) {
         this.socket = socket;
@@ -144,7 +137,7 @@ public class ClientThread extends Thread{
 						break;
 					case "Server To Client: Message":
 						String message = (String) messager.getObject();
-						JOptionPane.showMessageDialog(null, message);
+						messageAll += message + "\n";
 						break;
                 
                     default:
@@ -203,5 +196,9 @@ public class ClientThread extends Thread{
 
 	public void setScreen(ImageIcon screen) {
 		this.screen = screen;
+	}
+
+	public String getMessageAll() {
+		return messageAll;
 	}
 }

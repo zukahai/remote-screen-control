@@ -88,6 +88,10 @@ public class Client {
 		clientThread.setUserConnect(userConnect);
 	}
 
+    public String getMessageAll() {
+        return clientThread.getMessageAll();
+    }
+
 	public static void main(String[] args) {
         Client client = new Client();
     }
