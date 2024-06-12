@@ -12,6 +12,8 @@ import javax.swing.border.LineBorder;
 import models.User;
 
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.JInternalFrame;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -27,6 +29,8 @@ import java.awt.Font;
 import java.awt.Image;
 
 import javax.swing.JSeparator;
+import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
 
 public class ClientView extends JFrame {
 
@@ -45,6 +49,9 @@ public class ClientView extends JFrame {
 	public JButton changeDesktopBackground;
 	public JButton adjustBrightness;
 	public JButton screenShare;
+	private JTextField messageTf;
+	private boolean isChat = false;
+	public JButton chatBt;
 
 	/**
 	 * Launch the application.
@@ -67,7 +74,7 @@ public class ClientView extends JFrame {
 	public ClientView() {
 		setTitle("Điều khiển màn hình");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 620, 450);
+		setBounds(100, 100, 851, 450);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.decode("#323333"));
 		contentPane.setBorder(new CompoundBorder());
@@ -232,6 +239,17 @@ public class ClientView extends JFrame {
 		connectServer.setBounds(101, 125, 89, 23);
 		connect_pn.add(connectServer);
 		
+		chatBt = new JButton("Show chat");
+		chatBt.setForeground(new Color(248, 248, 255));
+		chatBt.setBackground(new Color(0, 0, 0));
+		chatBt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setSizeAll();
+			}
+		});
+		chatBt.setBounds(197, 347, 96, 29);
+		panel.add(chatBt);
+		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.decode("#292a30"));
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -268,8 +286,29 @@ public class ClientView extends JFrame {
 		screenCapture_1_2.setIcon(getIcon("coming_soon"));
 		screenCapture_1_2.setBounds(133, 260, 113, 113);
 		panel_1.add(screenCapture_1_2);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBounds(603, 11, 222, 384);
+		panel_2.setBackground(Color.decode("#292a30"));
+		contentPane.add(panel_2);
+		panel_2.setLayout(null);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 11, 202, 327);
+		panel_2.add(scrollPane);
+		
+		JTextArea messageTa = new JTextArea();
+		messageTa.setBackground(Color.decode("#acadaf"));
+		scrollPane.setViewportView(messageTa);
+		
+		messageTf = new JTextField();
+		messageTf.setBackground(Color.decode("#acadaf"));
+		messageTf.setBounds(10, 349, 202, 24);
+		panel_2.add(messageTf);
+		messageTf.setColumns(10);
 		setLocationRelativeTo(null);
 		this.addHoverListener();
+		setSizeAll();
 		
 		setPanelConnect();
 		setVisible(true);
@@ -325,6 +364,20 @@ public class ClientView extends JFrame {
         });
 	}
 	
+	void setSizeAll() {
+		if (isChat) {
+			setBounds(100, 100, 851, 450);
+			chatBt.setText("Hide chat");
+		}
+		else {
+			chatBt.setText("Show chat");
+			setBounds(100, 100, 620, 450);
+		}
+			
+		setLocationRelativeTo(null);
+		isChat = !isChat;
+	}
+	
 	public Icon getIcon(String name) {
 		int width = 113;
 		int height = 113;
@@ -347,5 +400,9 @@ public class ClientView extends JFrame {
 		myID.setText(user.getId() + "");
 		myPass.setText(user.getPassword() + "");
 	}
-
+	
+	public void setIsChat(boolean isChat) {
+		this.isChat = isChat;
+		setSizeAll();
+	}
 }
